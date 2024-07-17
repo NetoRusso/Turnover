@@ -5,10 +5,11 @@ Ele permite o registro, visualização e edição de perfis de funcionários, ge
 
 ## Equipe e Colaboradores
 
-- Romulo Nogueira de Souza
 - Argeu do Carmo Russo Neto
-- Pedro Augusto Montes
 - Douglas Daniel Moraes Ferreira
+- Pedro Augusto Montes
+- Romulo Nogueira de Souza
+
 
 ## Objetivos do Projeto
 
