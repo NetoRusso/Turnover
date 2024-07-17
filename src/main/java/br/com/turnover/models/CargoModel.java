@@ -1,4 +1,4 @@
-package br.com.turnover.model;
+package br.com.turnover.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -9,8 +9,8 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "TB_DEPARTAMENTO")
-public class DepartamentoModel implements Serializable {
+@Table(name = "TB_CARGO")
+public class CargoModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -18,23 +18,20 @@ public class DepartamentoModel implements Serializable {
     private UUID id;
 
     @Column(nullable = false, unique = true)
-    private String nomeDepartamento;
+    private String nome;
 
-    private String localizacao;
+    private String CBO;
 
-    private String senhaDepartamento;
+    private int cargaHoraria;
 
-    private String descricao;
+    private double salario;
 
-    private int lotacaoMax;
+    private double pisoSalarial;
 
-    private int turnoA;
-
-    private int turnoB;
-
-    private int turnoC;
+    private double tetoSalarial;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "departamento", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "cargo", fetch = FetchType.LAZY)
     private Set<FuncionarioModel> funcionarios = new HashSet<>();
+
 }

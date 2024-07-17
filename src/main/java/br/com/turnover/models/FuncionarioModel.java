@@ -1,4 +1,4 @@
-package br.com.turnover.model;
+package br.com.turnover.models;
 
 import jakarta.persistence.*;
 
