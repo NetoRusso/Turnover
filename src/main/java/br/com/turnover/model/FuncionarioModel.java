@@ -37,9 +37,11 @@ public class FuncionarioModel implements Serializable {
     private boolean pontroDiarioSaida;
 
     @ManyToOne
+    @JoinColumn(name = "cargo_id")
     private CargoModel cargo;
 
     @ManyToOne
+    @JoinColumn(name = "departamento_id")
     private DepartamentoModel departamento;
 
 
