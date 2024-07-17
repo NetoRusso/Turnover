@@ -2,21 +2,23 @@ package br.com.turnover.model;
 
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Table(name = "TB_FUNCIONARIO")
-public class FuncionarioModel {
+public class FuncionarioModel implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @Column(nullable = false)
     private String nome;
 
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false, unique = true)
     private String cpf;
 
     @Column(nullable = false)
@@ -28,13 +30,11 @@ public class FuncionarioModel {
 
     private String email;
 
-    private int horasTrabalhadasDia;
+    private boolean remotoOuHibrido;
 
     private boolean pontoDiarioEntrada;
 
     private boolean pontroDiarioSaida;
-
-    private double cargoSalario;
 
     @ManyToOne
     private CargoModel cargo;
@@ -42,107 +42,5 @@ public class FuncionarioModel {
     @ManyToOne
     private DepartamentoModel departamento;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public LocalDate getNascimento() {
-        return nascimento;
-    }
-
-    public void setNascimento(LocalDate nascimento) {
-        this.nascimento = nascimento;
-    }
-
-    public LocalDate getContratacao() {
-        return contratacao;
-    }
-
-    public void setContratacao(LocalDate contratacao) {
-        this.contratacao = contratacao;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getHorasTrabalhadasDia() {
-        return horasTrabalhadasDia;
-    }
-
-    public void setHorasTrabalhadasDia(int horasTrabalhadasDia) {
-        this.horasTrabalhadasDia = horasTrabalhadasDia;
-    }
-
-    public boolean isPontoDiarioEntrada() {
-        return pontoDiarioEntrada;
-    }
-
-    public void setPontoDiarioEntrada(boolean pontoDiarioEntrada) {
-        this.pontoDiarioEntrada = pontoDiarioEntrada;
-    }
-
-    public boolean isPontroDiarioSaida() {
-        return pontroDiarioSaida;
-    }
-
-    public void setPontroDiarioSaida(boolean pontroDiarioSaida) {
-        this.pontroDiarioSaida = pontroDiarioSaida;
-    }
-
-    public double getCargoSalario() {
-        return cargoSalario;
-    }
-
-    public void setCargoSalario(double cargoSalario) {
-        this.cargoSalario = cargoSalario;
-    }
-
-    public CargoModel getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(CargoModel cargo) {
-        this.cargo = cargo;
-    }
-
-    public DepartamentoModel getDepartamento() {
-        return departamento;
-    }
-
-    public void setDepartamento(DepartamentoModel departamento) {
-        this.departamento = departamento;
-    }
 }
