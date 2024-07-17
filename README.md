@@ -72,7 +72,9 @@ Em resumo, essa integração nos permitirá criar um sistema completo, desde a i
 
 ## Arquitetura e Design
 
-Mostre alguns esboços ou wireframes de design para dar uma ideia visual do layout.
+
+<img width="2009" alt="Fluxo TurnoverEducation01" src="https://github.com/user-attachments/assets/2473b15c-9f9f-4ded-9e5c-5cafc490389b">
+
 
 ## Desenvolvimento e Implementação (Metodologia)
 
