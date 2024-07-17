@@ -37,4 +37,84 @@ public class DepartamentoModel implements Serializable {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "departamento", fetch = FetchType.LAZY)
     private Set<FuncionarioModel> funcionarios = new HashSet<>();
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getNomeDepartamento() {
+        return nomeDepartamento;
+    }
+
+    public void setNomeDepartamento(String nomeDepartamento) {
+        this.nomeDepartamento = nomeDepartamento;
+    }
+
+    public String getLocalizacao() {
+        return localizacao;
+    }
+
+    public void setLocalizacao(String localizacao) {
+        this.localizacao = localizacao;
+    }
+
+    public String getSenhaDepartamento() {
+        return senhaDepartamento;
+    }
+
+    public void setSenhaDepartamento(String senhaDepartamento) {
+        this.senhaDepartamento = senhaDepartamento;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public int getLotacaoMax() {
+        return lotacaoMax;
+    }
+
+    public void setLotacaoMax(int lotacaoMax) {
+        this.lotacaoMax = lotacaoMax;
+    }
+
+    public int getTurnoA() {
+        return turnoA;
+    }
+
+    public void setTurnoA(int turnoA) {
+        this.turnoA = turnoA;
+    }
+
+    public int getTurnoB() {
+        return turnoB;
+    }
+
+    public void setTurnoB(int turnoB) {
+        this.turnoB = turnoB;
+    }
+
+    public int getTurnoC() {
+        return turnoC;
+    }
+
+    public void setTurnoC(int turnoC) {
+        this.turnoC = turnoC;
+    }
+
+    public Set<FuncionarioModel> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public void setFuncionarios(Set<FuncionarioModel> funcionarios) {
+        this.funcionarios = funcionarios;
+    }
 }
