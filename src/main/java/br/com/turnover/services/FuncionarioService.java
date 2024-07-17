@@ -1,40 +1,34 @@
 package br.com.turnover.services;
 
-import br.com.turnover.dtos.FuncionarioRecordDto;
 import br.com.turnover.models.FuncionarioModel;
-import br.com.turnover.repositories.CargoRepository;
-import br.com.turnover.repositories.DepartamentoRepository;
 import br.com.turnover.repositories.FuncionarioRepository;
-import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.stream.Collectors;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class FuncionarioService {
 
-    private final FuncionarioRepository funcionarioRepository;
-    private final CargoRepository cargoRepository;
-    private final DepartamentoRepository departamentoRepository;
+    @Autowired
+    private FuncionarioRepository funcionarioRepository;
 
-    public FuncionarioService(FuncionarioRepository funcionarioRepository, CargoRepository cargoRepository, DepartamentoRepository departamentoRepository) {
-        this.funcionarioRepository = funcionarioRepository;
-        this.cargoRepository = cargoRepository;
-        this.departamentoRepository = departamentoRepository;
+    public List<FuncionarioModel> findAll() {
+        return funcionarioRepository.findAll();
     }
 
-    @Transactional
-    public FuncionarioModel saveFuncionario(FuncionarioRecordDto funcionarioRecordDto) {
-        FuncionarioModel funcionario = new FuncionarioModel();
-        funcionario.setNome(funcionarioRecordDto.nome());
-        funcionario.setPublisher(cargoRepository.findById(funcionarioRecordDto.publisherId()).get());
-        funcionario.setAuthors(departamentoRepository.findAllById(funcionarioRecordDto.authorIds()).stream().collect(Collectors.toSet()));
+    public Optional<FuncionarioModel> findById(UUID id) {
+        return funcionarioRepository.findById(id);
+    }
 
-        ReviewModel reviewModel = new ReviewModel();
-        reviewModel.setComment(bookRecordDto.reviewComment());
-        reviewModel.setBook(book);
-        book.setReview(reviewModel);
+    public FuncionarioModel save(FuncionarioModel funcionario) {
+        return funcionarioRepository.save(funcionario);
+    }
 
-        return bookRepository.save(book);
+    public void deleteById(UUID id) {
+        funcionarioRepository.deleteById(id);
     }
 }
+
