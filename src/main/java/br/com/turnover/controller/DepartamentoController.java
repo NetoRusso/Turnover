@@ -13,7 +13,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/departamentos")
 public class DepartamentoController {
-
+    // ... GET, POST, DELETE, UPDATE methods
     @Autowired
     private DepartamentoService departamentoService;
 

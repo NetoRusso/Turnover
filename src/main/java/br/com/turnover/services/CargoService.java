@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @Service
 public class CargoService {
-
+    // business rules
     @Autowired
     private CargoRepository cargoRepository;
 

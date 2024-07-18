@@ -13,7 +13,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/cargos")
 public class CargoController {
-
+    // ... GET, POST, DELETE, UPDATE methods
     @Autowired
     private CargoService cargoService;
 
