@@ -30,5 +30,10 @@ public class FuncionarioService {
     public void deleteById(UUID id) {
         funcionarioRepository.deleteById(id);
     }
+
+    public FuncionarioModel createFuncionario(FuncionarioModel funcionario) {
+            return funcionarioRepository.save(funcionario);
+
+    }
 }
 
