@@ -1,7 +1,9 @@
 package br.com.turnover.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.Data;
+import org.hibernate.validator.constraints.br.CPF;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -20,6 +22,7 @@ public class FuncionarioModel implements Serializable {
     @Column(nullable = false)
     private String nome;
 
+    @CPF
     @Column(nullable = false, unique = true)
     private String cpf;
 
@@ -30,6 +33,7 @@ public class FuncionarioModel implements Serializable {
 
     private Date contratacao;
 
+    @Email
     private String email;
 
     private boolean remotoOuHibrido;
@@ -45,6 +49,4 @@ public class FuncionarioModel implements Serializable {
     @ManyToOne
     @JoinColumn(name = "departamento_id")
     private DepartamentoModel departamento;
-
-
 }

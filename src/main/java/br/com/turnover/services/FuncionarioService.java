@@ -33,7 +33,6 @@ public class FuncionarioService {
             throw new RuntimeException("CPF já existe");
         }
 
-
         funcionarioRepository.save(funcionarioModel);
     }
 
