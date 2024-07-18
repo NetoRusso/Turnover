@@ -176,13 +176,18 @@ html {
   min-width: 360px;
   min-height: 100vh;
   height: auto;
+  font-family: var(--font-standard);
 }
 
 body {
   width: 100%;
   min-height: 100%;
+  max-width: 100vw;
   height: auto;
 }
+
+
+/* Menus */
 
 .menuDesktop {
   width: 100%;
@@ -230,3 +235,61 @@ body {
   border-top-right-radius: 20px;
   border-bottom-left-radius: 10px;
 }
+
+/* Menu mobile */
+
+/*
+.menu-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.5s ease;
+}
+
+.menu-toggle img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+//Rotação do botão de menu/
+.menu-toggle.active {
+  transform: rotate(100deg);
+}
+.nav-links {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  left: 20px;
+  width: 90%;
+  max-width: 300px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 999;
+  transition: transform 0.5s ease;
+}
+
+.nav-links.active {
+  display: block;
+}
+
+.nav-links li {
+  margin: 10px 0;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.nav-links li:last-child {
+  border-bottom: none;
+}
+
+.nav-links a {
+  color: #333;
+  text-decoration: none;
+}
+*/
