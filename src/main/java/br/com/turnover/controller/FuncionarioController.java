@@ -17,7 +17,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/funcionario")
 public class FuncionarioController {
-
+    // ... GET, POST, DELETE, UPDATE methods
     @Autowired
     private FuncionarioService funcionarioService;
 

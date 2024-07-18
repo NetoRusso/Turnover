@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Service
 public class DepartamentoService {
-
+    // business rules
     @Autowired
     private DepartamentoRepository departamentoRepository;
 

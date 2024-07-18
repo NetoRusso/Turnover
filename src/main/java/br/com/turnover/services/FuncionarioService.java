@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @Service
 public class FuncionarioService {
-
+    // business rules
     @Autowired
     private FuncionarioRepository funcionarioRepository;
 
