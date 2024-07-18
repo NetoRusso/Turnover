@@ -1,8 +1,5 @@
 package br.com.turnover.dtos;
 
-import jakarta.persistence.Column;
-
-import java.time.LocalDate;
 import java.util.Date;
 
 public record FuncionarioRecordDto(
