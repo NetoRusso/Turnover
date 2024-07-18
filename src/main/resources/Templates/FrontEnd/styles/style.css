@@ -9,12 +9,39 @@ header {
 
 main {
   background-color: var(--color-white);
-  
-}
+  }
 
 
 /*noticias*/
 
+.noticiaSection {
+  padding: 50px 16px;
+  min-height: 100vh;
+}
+
+.noticiaCabecalho {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.noticiasTitulo {
+  font-size: var(--font-size-title-2);
+  color: var(--color-standard);
+  text-align: center;
+}
+
+.simboloNoticia {
+  height: var(--font-size-title-2);
+  width: auto;
+}
+
+
+
+
+
+/* 
 .noticia-container {
   display: flex;
   justify-content: center;
@@ -56,12 +83,16 @@ img {
 
 .noticia1 p, .noticia2 p, .noticia3 p, .noticia4 p {
   line-height: 1.6;
-}
+} */
 
+/*
 .noticia1 h5, .noticia2 h5, .noticia3 h5, .noticia4 h5 {
-  margin-bottom: 0; /* Remove margem inferior do subtítulo */
-  color: #666; /* Cor do subtítulo */
+  margin-bottom: 0;
+  color: #666;
 }
+  */
+
+
 
 /*cards*/
 
