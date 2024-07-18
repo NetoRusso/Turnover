@@ -1,8 +1,12 @@
 package br.com.turnover.controller;
 
+import br.com.turnover.dtos.FuncionarioRecordDto;
 import br.com.turnover.models.FuncionarioModel;
+import br.com.turnover.repositories.FuncionarioRepository;
 import br.com.turnover.services.FuncionarioService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,9 +32,12 @@ public class FuncionarioController {
         return funcionario.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping
-    public FuncionarioModel createFuncionario(@RequestBody FuncionarioModel funcionario) {
-        return funcionarioService.save(funcionario);
+    @PostMapping("")
+    public String saveFuncionario(@RequestBody FuncionarioRecordDto funcionario) {
+        FuncionarioModel funcionarioModel = new FuncionarioModel();
+        BeanUtils.copyProperties(funcionario, funcionarioModel);
+        funcionarioService.saveFuncionario(funcionarioModel);
+        return "redirect:/funcionario";
     }
 
     @DeleteMapping("/{id}")
