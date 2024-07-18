@@ -1,12 +1,13 @@
 package br.com.turnover.models;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
+@Data
 @Entity
 @Table(name = "TB_FUNCIONARIO")
 public class FuncionarioModel implements Serializable {
@@ -45,99 +46,5 @@ public class FuncionarioModel implements Serializable {
     @JoinColumn(name = "departamento_id")
     private DepartamentoModel departamento;
 
-    public UUID getId() {
-        return id;
-    }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public Date getNascimento() {
-        return nascimento;
-    }
-
-    public void setNascimento(Date nascimento) {
-        this.nascimento = nascimento;
-    }
-
-    public Date getContratacao() {
-        return contratacao;
-    }
-
-    public void setContratacao(Date contratacao) {
-        this.contratacao = contratacao;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public boolean isRemotoOuHibrido() {
-        return remotoOuHibrido;
-    }
-
-    public void setRemotoOuHibrido(boolean remotoOuHibrido) {
-        this.remotoOuHibrido = remotoOuHibrido;
-    }
-
-    public boolean isPontoDiarioEntrada() {
-        return pontoDiarioEntrada;
-    }
-
-    public void setPontoDiarioEntrada(boolean pontoDiarioEntrada) {
-        this.pontoDiarioEntrada = pontoDiarioEntrada;
-    }
-
-    public boolean isPontroDiarioSaida() {
-        return pontroDiarioSaida;
-    }
-
-    public void setPontroDiarioSaida(boolean pontroDiarioSaida) {
-        this.pontroDiarioSaida = pontroDiarioSaida;
-    }
-
-    public CargoModel getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(CargoModel cargo) {
-        this.cargo = cargo;
-    }
-
-    public DepartamentoModel getDepartamento() {
-        return departamento;
-    }
-
-    public void setDepartamento(DepartamentoModel departamento) {
-        this.departamento = departamento;
-    }
 }
