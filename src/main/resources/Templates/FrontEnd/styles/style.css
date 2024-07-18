@@ -76,6 +76,7 @@ footer {
 }
 
 /* Estilos responsivos */
+
 @media (max-width: 360px) {
   .menu-toggle {
     height: 40px;

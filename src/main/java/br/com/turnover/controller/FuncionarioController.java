@@ -44,5 +44,6 @@ public class FuncionarioController {
     public ResponseEntity<Void> deleteFuncionario(@PathVariable UUID id) {
         funcionarioService.deleteById(id);
         return ResponseEntity.noContent().build();
+
     }
 }
