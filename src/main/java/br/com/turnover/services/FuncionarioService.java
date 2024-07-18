@@ -1,6 +1,5 @@
 package br.com.turnover.services;
 
-import br.com.turnover.dtos.FuncionarioRecordDto;
 import br.com.turnover.models.FuncionarioModel;
 import br.com.turnover.repositories.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +11,13 @@ import java.util.UUID;
 
 @Service
 public class FuncionarioService {
-    // business rules
+
+    private final FuncionarioRepository funcionarioRepository;
+
     @Autowired
-    private FuncionarioRepository funcionarioRepository;
+    public FuncionarioService(FuncionarioRepository funcionarioRepository) {
+        this.funcionarioRepository = funcionarioRepository;
+    }
 
     public List<FuncionarioModel> findAll() {
         return funcionarioRepository.findAll();
@@ -24,17 +27,22 @@ public class FuncionarioService {
         return funcionarioRepository.findById(id);
     }
 
-    public void saveFuncionario(FuncionarioModel funcionario) {
-         funcionarioRepository.save(funcionario);
+    public void saveFuncionario(FuncionarioModel funcionarioModel) {
+
+        if (funcionarioRepository.existsByCpf(funcionarioModel.getCpf())) {
+            throw new RuntimeException("CPF já existe");
+        }
+
+
+        funcionarioRepository.save(funcionarioModel);
     }
 
     public void deleteById(UUID id) {
+        if (!funcionarioRepository.existsById(id)) {
+            throw new RuntimeException("Funcionário não encontrado");
+        }
         funcionarioRepository.deleteById(id);
     }
-
-    public FuncionarioModel createFuncionario(FuncionarioModel funcionario) {
-            return funcionarioRepository.save(funcionario);
-
-    }
 }
+
 

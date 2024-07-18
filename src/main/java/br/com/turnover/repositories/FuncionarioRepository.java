@@ -6,5 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
 public interface FuncionarioRepository extends JpaRepository<FuncionarioModel, UUID> {
-    // database transaction methods
+
+    boolean existsByCpf(String cpf);
 }
