@@ -1,5 +1,6 @@
 package br.com.turnover.services;
 
+import br.com.turnover.dtos.FuncionarioRecordDto;
 import br.com.turnover.models.FuncionarioModel;
 import br.com.turnover.repositories.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,8 @@ public class FuncionarioService {
         return funcionarioRepository.findById(id);
     }
 
-    public FuncionarioModel save(FuncionarioModel funcionario) {
-        return funcionarioRepository.save(funcionario);
+    public void saveFuncionario(FuncionarioModel funcionario) {
+         funcionarioRepository.save(funcionario);
     }
 
     public void deleteById(UUID id) {

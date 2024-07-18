@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -24,9 +25,9 @@ public class FuncionarioModel implements Serializable {
     @Column(nullable = false)
     private String senha;
 
-    private LocalDate nascimento;
+    private Date nascimento;
 
-    private LocalDate contratacao;
+    private Date contratacao;
 
     private String email;
 
@@ -76,19 +77,19 @@ public class FuncionarioModel implements Serializable {
         this.senha = senha;
     }
 
-    public LocalDate getNascimento() {
+    public Date getNascimento() {
         return nascimento;
     }
 
-    public void setNascimento(LocalDate nascimento) {
+    public void setNascimento(Date nascimento) {
         this.nascimento = nascimento;
     }
 
-    public LocalDate getContratacao() {
+    public Date getContratacao() {
         return contratacao;
     }
 
-    public void setContratacao(LocalDate contratacao) {
+    public void setContratacao(Date contratacao) {
         this.contratacao = contratacao;
     }
 
