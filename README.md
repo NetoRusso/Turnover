@@ -1,4 +1,6 @@
 # Turnover
+![Alimentos E Bebidas Email Header](https://github.com/user-attachments/assets/0bc3b158-ec01-408c-864b-7fdf208fb682)
+
 
 **Descrição**:Este projeto é um sistema de gestão de funcionários desenvolvido em Java com Spring Boot.
 Ele permite o registro, visualização e edição de perfis de funcionários, gerenciamento de departamentos e lotação por carga horária.
