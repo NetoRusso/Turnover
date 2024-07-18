@@ -110,11 +110,9 @@ public class DepartamentoModel implements Serializable {
         this.turnoC = turnoC;
     }
 
-    public Set<FuncionarioModel> getFuncionarios() {
-        return funcionarios;
+    public Set<FuncionarioModel> getFuncionario() {
+        Set<FuncionarioModel> funcionario = Set.of();
+        return funcionario;
     }
 
-    public void setFuncionarios(Set<FuncionarioModel> funcionarios) {
-        this.funcionarios = funcionarios;
-    }
 }
