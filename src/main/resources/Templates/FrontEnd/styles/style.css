@@ -37,6 +37,59 @@ main {
   width: auto;
 }
 
+.noticiaBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.noticiaImg {
+  width: 30%;
+  min-width: 320px;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  margin: 32px 0;
+}
+
+.noticiaBoxTextos {
+  width: 60%;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.noticiaBoxTitulo {
+  width: 100%;
+  min-width: 320px;
+  font-size: var(--font-size-title-2);
+  color: var(--color-standard);
+  text-align: left;
+}
+
+.noticiaBoxTexto {
+  width: 80%;
+  min-width: 320px;
+  font-size: var(--font-size-text-1);
+  color: var(--color-standard);
+  text-align: left;
+  line-height: 1.5;
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+  .noticiaBox {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin: 16px 0;
+  }
+}
+
 
 
 
