@@ -40,16 +40,21 @@ main {
 
 .noticiaBox {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   gap: 20px;
+  margin: 32px 0;
+}
+
+.noticiaD {
+  flex-direction: row-reverse;
 }
 
 .noticiaImg {
-  width: 30%;
+  width: 40%;
   min-width: 320px;
   height: auto;
-  aspect-ratio: 1;
+  /* aspect-ratio: 1; */
   object-fit: cover;
   margin: 32px 0;
 }

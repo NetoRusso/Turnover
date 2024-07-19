@@ -38,7 +38,7 @@ public class FuncionarioService {
 
 
     public void saveFuncionario(FuncionarioModel funcionarioModel) {
-        if (funcionarioModel.getId() == null) { // Se não houver ID, é uma criação
+        if (!funcionarioModel.getId()) { // Se não houver ID, é uma criação
             if (funcionarioRepository.existsByCpf(funcionarioModel.getCpf())) {
                 throw new RuntimeException("CPF já existe");
             }

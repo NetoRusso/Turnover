@@ -50,4 +50,11 @@ public class FuncionarioModel implements Serializable {
     @JoinColumn(name = "departamento_id")
     private DepartamentoModel departamento;
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public boolean getId() {
+        return id != null;
+    }
 }

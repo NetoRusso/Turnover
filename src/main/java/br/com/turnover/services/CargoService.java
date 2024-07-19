@@ -32,4 +32,3 @@ public class CargoService {
         cargoRepository.deleteById(id);
     }
 }
-
