@@ -34,6 +34,12 @@ public class FuncionarioController {
         return funcionario.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/cpf")
+    public ResponseEntity<FuncionarioModel> getFuncionarioByCpf(@RequestParam("cpf") String cpf) {
+        Optional<FuncionarioModel> funcionario = funcionarioService.findByCpf(cpf);
+        return funcionario.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
     @PostMapping("/salvar")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<String> saveFuncionario(@RequestBody @Valid FuncionarioRecordDto funcionarioDto) {
@@ -48,4 +54,10 @@ public class FuncionarioController {
         funcionarioService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+//    @DeleteMapping("/cpf")
+//    public ResponseEntity<String> deleteByCpf(@RequestParam("cpf") String cpf) {
+//        funcionarioService.deleteByCpf(cpf);
+//        return ResponseEntity.ok("Funcionário deletado com sucesso");
+//    }
 }
