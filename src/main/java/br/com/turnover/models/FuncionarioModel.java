@@ -39,8 +39,11 @@ public class FuncionarioModel implements Serializable {
     private boolean remotoOuHibrido;
 
     private boolean pontoDiarioEntrada;
-//    @Column(nullable = true)
+
     private boolean pontoDiarioSaida;
+
+    @Enumerated(EnumType.STRING)
+    private TurnoModel turno;
 
     @ManyToOne
     @JoinColumn(name = "cargo_id")

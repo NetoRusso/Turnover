@@ -1,5 +1,7 @@
 package br.com.turnover.dtos;
 
+import br.com.turnover.models.TurnoModel;
+
 import java.util.Date;
 
 public record FuncionarioRecordDto(
@@ -11,6 +13,7 @@ public record FuncionarioRecordDto(
         String email,
         boolean remotoOuHibrido,
         boolean pontoDiarioEntrada,
-        boolean pontroDiarioSaida
+        boolean pontroDiarioSaida,
+        TurnoModel turno
 ) {
 }
