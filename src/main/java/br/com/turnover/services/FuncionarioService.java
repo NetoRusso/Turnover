@@ -38,9 +38,12 @@ public class FuncionarioService {
 
 
     public void saveFuncionario(FuncionarioModel funcionarioModel) {
-        if (funcionarioRepository.existsByCpf(funcionarioModel.getCpf())) {
-            throw new RuntimeException("CPF já existe");
+        if (funcionarioModel.getId() == null) { // Se não houver ID, é uma criação
+            if (funcionarioRepository.existsByCpf(funcionarioModel.getCpf())) {
+                throw new RuntimeException("CPF já existe");
+            }
         }
+        // Se houver ID ou o CPF não existir, salva ou atualiza o funcionário
         funcionarioRepository.save(funcionarioModel);
     }
 
@@ -59,6 +62,5 @@ public class FuncionarioService {
         }
         funcionarioRepository.deleteByCpf(cpf);
     }
+
 }
-
-

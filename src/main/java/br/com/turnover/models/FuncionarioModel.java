@@ -39,8 +39,8 @@ public class FuncionarioModel implements Serializable {
     private boolean remotoOuHibrido;
 
     private boolean pontoDiarioEntrada;
-
-    private boolean pontroDiarioSaida;
+//    @Column(nullable = true)
+    private boolean pontoDiarioSaida;
 
     @ManyToOne
     @JoinColumn(name = "cargo_id")
@@ -50,7 +50,4 @@ public class FuncionarioModel implements Serializable {
     @JoinColumn(name = "departamento_id")
     private DepartamentoModel departamento;
 
-    public String getCpf() {
-        return cpf;
-    }
 }
