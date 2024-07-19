@@ -27,12 +27,15 @@ public class FuncionarioService {
         return funcionarioRepository.findById(id);
     }
 
+    public Optional<FuncionarioModel> findByCpf(String cpf) {
+        return funcionarioRepository.findByCpf(cpf);
+    }
+
     public void saveFuncionario(FuncionarioModel funcionarioModel) {
 
         if (funcionarioRepository.existsByCpf(funcionarioModel.getCpf())) {
             throw new RuntimeException("CPF já existe");
         }
-
 
         funcionarioRepository.save(funcionarioModel);
     }
@@ -42,6 +45,13 @@ public class FuncionarioService {
             throw new RuntimeException("Funcionário não encontrado");
         }
         funcionarioRepository.deleteById(id);
+    }
+
+    public void deleteByCpf(String cpf) {
+        if (!funcionarioRepository.existsByCpf(cpf)) {
+            throw new RuntimeException("Funcionário não encontrado");
+        }
+        funcionarioRepository.deleteByCpf(cpf);
     }
 }
 
