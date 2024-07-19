@@ -40,9 +40,9 @@ public class DepartamentoModel implements Serializable {
     @OneToMany(mappedBy = "departamento", fetch = FetchType.LAZY)
     private Set<FuncionarioModel> funcionarios = new HashSet<>();
 
-    public Set<FuncionarioModel> getFuncionario() {
-        Set<FuncionarioModel> funcionario = Set.of();
-        return funcionario;
-    }
+//    public Set<FuncionarioModel> getFuncionario() {
+//        Set<FuncionarioModel> funcionario = Set.of();
+//        return funcionario;
+//    }
 
 }

@@ -1,12 +1,15 @@
 package br.com.turnover.controller;
 
-import java.util.List;
 import br.com.turnover.models.CargoModel;
 import br.com.turnover.services.CargoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Field;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -37,6 +40,24 @@ public class CargoController {
     public ResponseEntity<Void> deleteCargo(@PathVariable UUID id) {
         cargoService.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<CargoModel> patchCargo(@PathVariable UUID id, @RequestBody Map<String, Object> updates) {
+        Optional<CargoModel> cargoOptional = cargoService.findById(id);
+        if (!cargoOptional.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        CargoModel cargo = cargoOptional.get();
+        updates.forEach((key, value) -> {
+            Field field = ReflectionUtils.findField(CargoModel.class, key);
+            if (field != null) {
+                field.setAccessible(true);
+                ReflectionUtils.setField(field, cargo, value);
+            }
+        });
+        CargoModel updatedCargo = cargoService.save(cargo);
+        return ResponseEntity.ok(updatedCargo);
     }
 }
 

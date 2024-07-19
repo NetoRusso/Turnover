@@ -3,8 +3,6 @@ package br.com.turnover.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.io.Serializable;

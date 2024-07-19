@@ -4,9 +4,12 @@ import br.com.turnover.models.DepartamentoModel;
 import br.com.turnover.services.DepartamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -37,6 +40,24 @@ public class DepartamentoController {
     public ResponseEntity<Void> deleteDepartamento(@PathVariable UUID id) {
         departamentoService.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<DepartamentoModel> patchDepartamento(@PathVariable UUID id, @RequestBody Map<String, Object> updates) {
+        Optional<DepartamentoModel> departamentoOptional = departamentoService.findById(id);
+        if (!departamentoOptional.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        DepartamentoModel departamento = departamentoOptional.get();
+        updates.forEach((key, value) -> {
+            Field field = ReflectionUtils.findField(DepartamentoModel.class, key);
+            if (field != null) {
+                field.setAccessible(true);
+                ReflectionUtils.setField(field, departamento, value);
+            }
+        });
+        DepartamentoModel updatedDepartamento = departamentoService.save(departamento);
+        return ResponseEntity.ok(updatedDepartamento);
     }
 }
 
