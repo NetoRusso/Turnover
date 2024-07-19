@@ -12,5 +12,5 @@ public interface FuncionarioRepository extends JpaRepository<FuncionarioModel, U
 
     Optional<FuncionarioModel> findByCpf(String cpf);
 
-    String deleteByCpf(String cpf);
+    void deleteByCpf(String cpf);
 }
