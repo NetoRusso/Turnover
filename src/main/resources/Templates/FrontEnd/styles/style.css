@@ -24,6 +24,7 @@ main {
   justify-content: center;
   align-items: center;
   gap: 20px;
+  margin-bottom: 32px;
 }
 
 .noticiasTitulo {
@@ -76,6 +77,11 @@ main {
   color: var(--color-standard);
   text-align: left;
   line-height: 1.5;
+}
+
+.linkReferencia {
+  text-decoration: none;
+  width: auto;
 }
 
 
