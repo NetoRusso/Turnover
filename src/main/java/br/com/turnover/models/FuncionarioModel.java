@@ -3,6 +3,8 @@ package br.com.turnover.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.io.Serializable;
@@ -39,8 +41,8 @@ public class FuncionarioModel implements Serializable {
     private boolean remotoOuHibrido;
 
     private boolean pontoDiarioEntrada;
-
-    private boolean pontroDiarioSaida;
+//    @Column(nullable = true)
+    private boolean pontoDiarioSaida;
 
     @ManyToOne
     @JoinColumn(name = "cargo_id")
@@ -49,4 +51,5 @@ public class FuncionarioModel implements Serializable {
     @ManyToOne
     @JoinColumn(name = "departamento_id")
     private DepartamentoModel departamento;
+
 }

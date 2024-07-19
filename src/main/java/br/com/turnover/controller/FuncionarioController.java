@@ -10,8 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.util.ReflectionUtils;
 
+import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -65,5 +68,23 @@ public class FuncionarioController {
     public ResponseEntity<Void> deleteFuncionario(@PathVariable UUID id) {
         funcionarioService.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/cpf")
+    public ResponseEntity<String> patchFuncionarioByCpf(@RequestParam("cpf") String cpf, @RequestBody Map<String, Object> updates) {
+        Optional<FuncionarioModel> funcionarioOptional = funcionarioService.findByCpf(cpf);
+        if (!funcionarioOptional.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        FuncionarioModel funcionarioModel = funcionarioOptional.get();
+        updates.forEach((key, value) -> {
+            Field field = ReflectionUtils.findField(FuncionarioModel.class, key);
+            if (field != null) {
+                field.setAccessible(true);
+                ReflectionUtils.setField(field, funcionarioModel, value);
+            }
+        });
+        funcionarioService.saveFuncionario(funcionarioModel); // Save com o ID configurado
+        return ResponseEntity.ok("Funcionário atualizado com sucesso");
     }
 }
