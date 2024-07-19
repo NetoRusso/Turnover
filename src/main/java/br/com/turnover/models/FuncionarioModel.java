@@ -49,4 +49,8 @@ public class FuncionarioModel implements Serializable {
     @ManyToOne
     @JoinColumn(name = "departamento_id")
     private DepartamentoModel departamento;
+
+    public String getCpf() {
+        return cpf;
+    }
 }
