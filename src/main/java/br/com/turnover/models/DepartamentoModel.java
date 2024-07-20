@@ -39,10 +39,4 @@ public class DepartamentoModel implements Serializable {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "departamento", fetch = FetchType.LAZY)
     private Set<FuncionarioModel> funcionarios = new HashSet<>();
-
-//    public Set<FuncionarioModel> getFuncionario() {
-//        Set<FuncionarioModel> funcionario = Set.of();
-//        return funcionario;
-//    }
-
 }
