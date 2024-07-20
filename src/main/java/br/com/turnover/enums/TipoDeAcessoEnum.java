@@ -1,6 +1,6 @@
 package br.com.turnover.enums;
 
-public enum TipoDeAcesso {
+public enum TipoDeAcessoEnum {
     CEO,
     RH,
     GESTOR,

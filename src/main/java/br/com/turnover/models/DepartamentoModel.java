@@ -24,17 +24,7 @@ public class DepartamentoModel implements Serializable {
 
     private String localizacao;
 
-    private String senhaDepartamento;
-
     private String descricao;
-
-    private int lotacaoMax;
-
-    private int turnoA;
-
-    private int turnoB;
-
-    private int turnoC;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "departamento", fetch = FetchType.LAZY)

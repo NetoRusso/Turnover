@@ -8,4 +8,6 @@ import java.util.UUID;
 
 public interface UsuarioRepository extends JpaRepository<UsuarioModel, UUID> {
     Optional<UsuarioModel> findByCpf(String cpf);
+
+    Boolean existsByCpf(String cpf);
 }
