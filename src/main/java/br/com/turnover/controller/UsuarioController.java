@@ -17,7 +17,7 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @GetMapping
-    @PreAuthorize("hasRole('ROLE_FUNCIONARIO')")
+    @PreAuthorize("hasRole('ROLE_CEO')")
     public List<UsuarioModel> getAllUsuarios() {
         return usuarioService.findAll();
     }
