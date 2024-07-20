@@ -1,9 +1,10 @@
 package br.com.turnover.models;
 
+import br.com.turnover.enums.ModalidadeEnum;
+import br.com.turnover.enums.TurnoEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.Data;
-import org.hibernate.validator.constraints.br.CPF;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -22,13 +23,6 @@ public class FuncionarioModel implements Serializable {
     @Column(nullable = false)
     private String nome;
 
-    @CPF
-    @Column(nullable = false, unique = true)
-    private String cpf;
-
-    @Column(nullable = false)
-    private String senha;
-
     private Date nascimento;
 
     private Date contratacao;
@@ -36,14 +30,11 @@ public class FuncionarioModel implements Serializable {
     @Email
     private String email;
 
-    private boolean remotoOuHibrido;
-
-    private boolean pontoDiarioEntrada;
-
-    private boolean pontoDiarioSaida;
+    @Enumerated(EnumType.STRING)
+    private TurnoEnum turno;
 
     @Enumerated(EnumType.STRING)
-    private TurnoModel turno;
+    private ModalidadeEnum modalidade;
 
     @ManyToOne
     @JoinColumn(name = "cargo_id")
@@ -53,11 +44,13 @@ public class FuncionarioModel implements Serializable {
     @JoinColumn(name = "departamento_id")
     private DepartamentoModel departamento;
 
-    public String getCpf() {
-        return cpf;
-    }
+    @OneToOne
+    @JoinColumn(name = "usuario_id")
+    private UsuarioModel usuario;
 
-    public boolean getId() {
-        return id != null;
-    }
+    @ManyToOne
+    @JoinColumn(name = "alocacao_id")
+    private AlocacaoModel historicoAlocacao;
+
+//   private historico_locacao <Alocacao>;
 }
