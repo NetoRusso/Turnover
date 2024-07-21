@@ -4,13 +4,13 @@ import java.util.Date;
 
 public record FuncionarioRecordDto(
         String nome,
-        String cpf,
-        String senha,
         Date nascimento,
         Date contratacao,
         String email,
-        boolean remotoOuHibrido,
-        boolean pontoDiarioEntrada,
-        boolean pontroDiarioSaida
+        String turno,
+        String modalidade,
+        String cpf,
+        String senha,
+        String tipoDeAcesso
 ) {
 }

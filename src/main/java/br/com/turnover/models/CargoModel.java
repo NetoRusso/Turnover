@@ -22,23 +22,13 @@ public class CargoModel implements Serializable {
     @Column(nullable = false, unique = true)
     private String nome;
 
-    private String CBO;
+    private String descricao;
 
-    private int cargaHoraria;
+    private int cargaHoraria = 8;
 
     private double salario;
-
-    private double pisoSalarial;
-
-    private double tetoSalarial;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "cargo", fetch = FetchType.LAZY)
     private Set<FuncionarioModel> funcionarios = new HashSet<>();
-
-    public Set<FuncionarioModel> getFuncionario() {
-        Set<FuncionarioModel> funcionario = Set.of();
-        return funcionario;
-    }
-
 }
