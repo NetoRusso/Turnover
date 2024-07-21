@@ -1,0 +1,151 @@
+ @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+  --color-dark: #1a2228;
+  --color-white: #f2f8fc;
+  --color-grey: #d9d9d9;
+  --color-standard: #2e3c50;
+  --color-green-1: #00cc5d;
+  --color-green-2: #139146;
+  --color-yellow: #e8a543;
+  --color-red: #e9415a;
+
+  --color-dark-overlay: #1a222888;
+
+  --font-standard: "Roboto", sans-serif;
+  --wght-standard: 500;
+  --wght-bold: 700;
+  --wght-extra-bold: 900;
+
+  --font-size-title-1: clamp(1.25rem, 0.6667rem + 2.5926vw, 3rem);
+  --font-size-title-2: clamp(1rem, 0.6667rem + 1.4815vw, 2rem);
+  --font-size-text-1: clamp(0.75rem, 0.5rem + 1.1111vw, 1.5rem);
+  --font-size-text-2: clamp(0.5rem, 0.3333rem + 0.7407vw, 1rem);
+}
+
+body {
+    font-family: var(--font-standard);
+    background-color: var(--color-grey);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+    color: var(--color-dark);
+}
+
+.table-container {
+    width: 80%;
+    max-height: 400px;
+    overflow-y: auto;
+    margin: 25px 0;
+    border: 1px solid var(--color-grey);
+    background-color: var(--color-white);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-text-2);
+    text-align: left;
+}
+
+th, td {
+    padding: 8px;
+    border-bottom: 1px solid var(--color-grey);
+}
+
+th {
+    background-color: var(--color-standard);
+    color: var(--color-white);
+}
+
+.charts-container {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    margin: 25px 0;
+}
+
+.chart-container {
+    width: 45%;
+}
+
+.controls-container {
+    margin: 25px 0;
+}
+
+.controls-container button {
+    background-color: var(--color-standard);
+    color: var(--color-white);
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: var(--font-size-text-2);
+}
+
+.controls-container button:hover {
+    background-color: var(--color-dark);
+}
+
+.form-container {
+    width: 80%;
+    background-color: var(--color-white);
+    padding: 20px;
+    border: 1px solid var(--color-grey);
+    border-radius: 4px;
+}
+
+.form-container h2 {
+    margin-top: 0;
+    font-size: var(--font-size-title-2);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: var(--font-size-text-1);
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--color-grey);
+    border-radius: 4px;
+}
+
+.form-group button {
+    background-color: var(--color-standard);
+    color: var(--color-white);
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: var(--font-size-text-2);
+}
+
+.form-group button:hover {
+    background-color: var(--color-dark);
+}
+
+.search-container {
+    width: 80%;
+    background-color: var(--color-white);
+    padding: 20px;
+    border: 1px solid var(--color-grey);
+    border-radius: 4px;
+    margin-bottom: 25px;
+}
+
+.search-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: var(--font-size-text-1);
+}
