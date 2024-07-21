@@ -7,6 +7,7 @@ import jakarta.validation.constraints.Email;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
@@ -26,7 +27,7 @@ public class FuncionarioModel implements Serializable {
 
     private Date nascimento;
 
-    private Date contratacao;
+    private LocalDate contratacao;
 
     @Email
     private String email;

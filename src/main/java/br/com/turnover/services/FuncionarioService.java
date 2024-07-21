@@ -42,7 +42,7 @@ public class FuncionarioService {
     }
 
 
-    public Optional<FuncionarioModel> findByUsuarioByCpf(String cpf) {
+    public Optional<FuncionarioModel> findByUsuarioCpf(String cpf) {
         return funcionarioRepository.findByUsuarioCpf(cpf);
     }
 
@@ -52,7 +52,7 @@ public class FuncionarioService {
         UsuarioModel usuarioModel = new UsuarioModel();
         funcionarioModel.setNome(funcionarioRecordDto.nome());
         funcionarioModel.setNascimento(funcionarioRecordDto.nascimento());
-        funcionarioModel.setContratacao(funcionarioRecordDto.contratacao());
+        //funcionarioModel.setContratacao(funcionarioRecordDto.contratacao());
         funcionarioModel.setEmail(funcionarioRecordDto.email());
         funcionarioModel.setTurno(TurnoEnum.valueOf(funcionarioRecordDto.turno().toUpperCase()));
         funcionarioModel.setModalidade(ModalidadeEnum.valueOf(funcionarioRecordDto.modalidade().toUpperCase()));

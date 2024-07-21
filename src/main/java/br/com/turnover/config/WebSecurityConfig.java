@@ -30,7 +30,7 @@ public class WebSecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/funcionario/**").permitAll()
+                        .requestMatchers("/funcionario/**", "/alocacoes/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(withDefaults())
