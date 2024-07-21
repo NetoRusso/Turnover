@@ -480,6 +480,7 @@ main {
 .contatosContainer {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
   margin: 64px 0;
@@ -537,7 +538,7 @@ main {
 }
 
 .contatosChamada {
-  width: 360px;
+  width: 320px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -569,11 +570,6 @@ main {
   cursor: pointer;
   scale: 1.2;
 }
-
-
-
-
-
 
 
 /* Media queries  */
@@ -627,191 +623,13 @@ main {
   .aboutLogo {
     margin: 32px 0;
   }
-}
 
-
-
-
-
-
-/* 
-.noticia-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f0f0f0;
-  padding: 20px;
-}
-
-.noticia-link {
-  text-decoration: none;
-}
-
-.noticia1, .noticia2, .noticia3, .noticia4 {
-    max-width: 700px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-right: 20px;
-}
-.conteudo {
-  display: flex;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  margin-right: 20px;
-}
-
-.texto {
-  flex: 1;
-}
-
-.noticia1 h2, .noticia2 h2, .noticia3 h2, .noticia4 h2 {
-  margin-top: 0;
-}
-
-.noticia1 p, .noticia2 p, .noticia3 p, .noticia4 p {
-  line-height: 1.6;
-} */
-
-/*
-.noticia1 h5, .noticia2 h5, .noticia3 h5, .noticia4 h5 {
-  margin-bottom: 0;
-  color: #666;
-}
-  */
-
-
-
-/*cards*/
-
-/* .equipe {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 150px;
-}
-
-.equipeConteudo {
-  gap: 20px;
-  padding: 0 10%;
-  flex-direction: column;
-  align-items: center;
-}
-
-.equipeTitulo {
-  font-size: 30px;
-  text-align: center;
-}
-
-.equipeCards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.equipeCard {
-
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-  width: 100%;
-}
-
-.cardFoto {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  padding: 10px;
-  border: solid 3px chartreuse;
-  border-radius: 100px;
-  z-index: 2;
-}
-
-.cardTextos {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 100px 20px 40px 20px;
-  border: solid 3px greenyellow;
-  border-radius: 20px;
-  margin-top: -100px;
-  position: relative;
-  z-index: 1;
-
-}
-
-.cardLink {
-  display: flex;
-  flex-direction: row-reverse;
-}
-
-.cardNome {
-  font-size: 20px;
-  color: black;
-  text-align: center;
-}
-
-.cardTexto {
-  max-height: 360px;
-  height: 360px;
-  font-size: 16px;
-  color: black;
-  font-weight: 500;
-  line-height: 24px;
-}
-
-.linkedin {
-  width: 64px;
-  height: auto;
-  position: absolute;
-}
-
-.linkedin:hover {
-  cursor: pointer;
-  scale: 1.2;
-} */
-
-
-
-/* footer*/
-
-
-
-footer {
-  text-align: center;
-  padding: 10px;
-  background-color: #f0f0f0;
-}
-
-
-/* Estilos responsivos */
-
-/* @media (max-width: 360px) {
-  .menu-toggle {
-    height: 40px;
-    width: 40px;
-    bottom: 10px;
-    right: 10px;
+  .colaborador {
+    margin: 32px 0;
+    gap: 16px;
   }
 
-  .nav-links {
-    bottom: 60px;
-    right: 10px;
-    width: calc(100% - 20px);
-    max-width: none;
-    padding: 5px;
+  .contatos {
+    padding: 16px 0;
   }
-
-  .nav-links li {
-    margin: 5px 0;
-    padding: 5px 0;
-  }
-} */
+}
