@@ -8,6 +8,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -48,9 +49,9 @@ public class FuncionarioModel implements Serializable {
     @JoinColumn(name = "usuario_id")
     private UsuarioModel usuario;
 
-    @ManyToOne
-    @JoinColumn(name = "alocacao_id")
-    private AlocacaoModel historicoAlocacao;
+    @OneToMany(mappedBy = "funcionario")
+    private Set<AlocacaoModel> historicoAlocacao;
+
 
 //   private historico_locacao <Alocacao>;
 }

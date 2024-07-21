@@ -22,7 +22,9 @@ public class AlocacaoModel implements Serializable {
 
     private LocalDateTime dataAtualizacao;
 
-    @OneToMany//(mappedBy = "usuario")
+    @ManyToOne//(mappedBy = "usuario")
     @JoinColumn(name = "funcionario_id")
-    private Set<FuncionarioModel> funcionario;
+    private FuncionarioModel funcionario;
+
+
 }
