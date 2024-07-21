@@ -177,6 +177,7 @@ html {
   min-height: 100vh;
   height: auto;
   font-family: var(--font-standard);
+  font-weight: var(--wght-standard);
 }
 
 body {
