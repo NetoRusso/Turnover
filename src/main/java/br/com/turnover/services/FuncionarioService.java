@@ -45,6 +45,10 @@ public class FuncionarioService {
     public Optional<FuncionarioModel> findByUsuarioCpf(String cpf) {
         return funcionarioRepository.findByUsuarioCpf(cpf);
     }
+    public List<FuncionarioModel> findAllByDepartamentoId(UUID departamentoId) {
+        return funcionarioRepository.findAllByDepartamentoId(departamentoId);
+
+    }
 
 
     public void saveFuncionario(FuncionarioRecordDto funcionarioRecordDto) {
