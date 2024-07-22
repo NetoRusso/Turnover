@@ -6,6 +6,8 @@ import br.com.turnover.enums.TipoDeAcessoEnum;
 import br.com.turnover.enums.TurnoEnum;
 import br.com.turnover.models.FuncionarioModel;
 import br.com.turnover.models.UsuarioModel;
+import br.com.turnover.repositories.CargoRepository;
+import br.com.turnover.repositories.DepartamentoRepository;
 import br.com.turnover.repositories.FuncionarioRepository;
 import br.com.turnover.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,21 +23,27 @@ public class FuncionarioService {
 
     private final FuncionarioRepository funcionarioRepository;
     private final UsuarioRepository usuarioRepository;
-
+    private final DepartamentoRepository departamentoRepository;
+    private final CargoRepository cargoRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public FuncionarioService(FuncionarioRepository funcionarioRepository, UsuarioRepository usuarioRepository) {
+    public FuncionarioService(FuncionarioRepository funcionarioRepository, UsuarioRepository usuarioRepository, DepartamentoRepository departamentoRepository, CargoRepository cargoRepository) {
         this.funcionarioRepository = funcionarioRepository;
         this.usuarioRepository = usuarioRepository;
+        this.departamentoRepository = departamentoRepository;
+        this.cargoRepository = cargoRepository;
     }
+
+//    public List<FuncionarioModel> getAllFuncionariosWithDetails() {
+//        return funcionarioRepository.findAllWithDetails();
+//    }
 
 
     public List<FuncionarioModel> findAll() {
         return funcionarioRepository.findAll();
     }
-
 
     public Optional<FuncionarioModel> findById(UUID id) {
         return funcionarioRepository.findById(id);
@@ -45,6 +53,7 @@ public class FuncionarioService {
     public Optional<FuncionarioModel> findByUsuarioCpf(String cpf) {
         return funcionarioRepository.findByUsuarioCpf(cpf);
     }
+
     public List<FuncionarioModel> findAllByDepartamentoId(UUID departamentoId) {
         return funcionarioRepository.findAllByDepartamentoId(departamentoId);
 

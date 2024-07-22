@@ -53,6 +53,5 @@ public class FuncionarioModel implements Serializable {
     @OneToMany(mappedBy = "funcionario")
     private Set<AlocacaoModel> historicoAlocacao;
 
-
 //   private historico_locacao <Alocacao>;
 }

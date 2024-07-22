@@ -30,6 +30,13 @@ public class FuncionarioController {
         return funcionarioService.findAll();
     }
 
+//    @GetMapping("/details")
+//    @PreAuthorize("hasAnyRole('ROLE_RH', 'ROLE_CEO')")
+//    public List<FuncionarioModel> getAllFuncionariosDetails() {
+//        return funcionarioService.getAllFuncionariosWithDetails();
+//    }
+
+
     //salva um funcionario pela rota "funcionario/salvar"
     @PostMapping("/salvar")
     @ResponseStatus(HttpStatus.CREATED)
@@ -38,7 +45,6 @@ public class FuncionarioController {
         return ResponseEntity.status(HttpStatus.CREATED).body("Funcionário criado com sucesso");
     }
 
-
     //busca um funcionario especifico pelo seu id na rota "funcionario/{id}"
     @PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_RH', 'ROLE_GESTOR', 'ROLE_FUNCIONARIO')")
     @GetMapping("/{id}")
@@ -46,7 +52,8 @@ public class FuncionarioController {
         Optional<FuncionarioModel> funcionario = funcionarioService.findById(id);
         return funcionario.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
-    @PreAuthorize("hasAnyRole('ROLE_GESTOR')")
+
+    @PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_GESTOR')")
     @GetMapping("/departamento/{departamentoId}")
     public List<FuncionarioModel> getAllFuncionarioByDepartamentoId(@PathVariable UUID departamentoId) {
         return funcionarioService.findAllByDepartamentoId(departamentoId);

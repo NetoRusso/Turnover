@@ -4,6 +4,7 @@ import br.com.turnover.models.CargoModel;
 import br.com.turnover.services.CargoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,10 +17,12 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/cargos")
 public class CargoController {
-    // ... GET, POST, DELETE, UPDATE methods
+    // TODOS ESTES METODOS FORAM TESTADOS NO POSTMAN COM AUTENTICAÇAO E ESTAO FUNCIONANDO
+
     @Autowired
     private CargoService cargoService;
 
+    @PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_RH')")
     @GetMapping
     public List<CargoModel> getAllCargos() {
         return cargoService.findAll();
@@ -31,17 +34,20 @@ public class CargoController {
         return cargo.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_CEO')")
     @PostMapping
     public CargoModel createCargo(@RequestBody CargoModel cargo) {
         return cargoService.save(cargo);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_CEO')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCargo(@PathVariable UUID id) {
         cargoService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_CEO')")
     @PatchMapping("/{id}")
     public ResponseEntity<CargoModel> patchCargo(@PathVariable UUID id, @RequestBody Map<String, Object> updates) {
         Optional<CargoModel> cargoOptional = cargoService.findById(id);

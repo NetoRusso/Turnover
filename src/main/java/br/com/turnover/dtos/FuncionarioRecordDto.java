@@ -11,6 +11,9 @@ public record FuncionarioRecordDto(
         String modalidade,
         String cpf,
         String senha,
-        String tipoDeAcesso
+        String tipoDeAcesso,
+        UsuarioRecordDto usuario,
+        CargoRecordDto cargo,
+        DepartamentoRecordDto departamento
 ) {
 }
