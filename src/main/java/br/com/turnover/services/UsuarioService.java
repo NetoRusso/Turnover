@@ -38,7 +38,7 @@ public class UsuarioService {
         usuarioModel.setCpf(usuario.cpf());
         usuarioModel.setSenha(passwordEncoder.encode(usuario.senha())); // Criptografar a senha antes de salvar
         usuarioModel.setTipoDeAcessoEnum(usuario.tipoDeAcessoEnum());
-        usuarioModel.setFuncionario(usuario.funcionario());
+        usuarioModel.setFuncionario(usuario.funcionario()); // Pode ser null no início
         return usuarioRepository.save(usuarioModel);
     }
 

@@ -45,6 +45,19 @@ public class FuncionarioController {
         return ResponseEntity.status(HttpStatus.CREATED).body("Funcionário criado com sucesso");
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_RH', 'ROLE_GESTOR', 'ROLE_FUNCIONARIO')")
+    @GetMapping("/{id}/details")
+    public ResponseEntity<FuncionarioRecordDto> getFuncionarioDetailsById(@PathVariable UUID id) {
+        Optional<FuncionarioRecordDto> funcionarioDtoOptional = funcionarioService.findFuncionarioDetailsById(id);
+        return funcionarioDtoOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_RH', 'ROLE_CEO')")
+    @GetMapping("/details")
+    public List<FuncionarioRecordDto> getAllFuncionarioDetails() {
+        return funcionarioService.findAllFuncionarioDetails();
+    }
+
     //busca um funcionario especifico pelo seu id na rota "funcionario/{id}"
     @PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_RH', 'ROLE_GESTOR', 'ROLE_FUNCIONARIO')")
     @GetMapping("/{id}")

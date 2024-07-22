@@ -5,7 +5,7 @@ import java.util.Date;
 public record FuncionarioRecordDto(
         String nome,
         Date nascimento,
-        Date contratacao,
+        java.time.LocalDate contratacao,
         String email,
         String turno,
         String modalidade,
