@@ -1,237 +1,420 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dados Pessoais e Gráficos</title>
-    <link rel="stylesheet" href="ceo.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Douglas Moraes, Neto Russo, Romulo Nogueira, Pedro Augusto">
+  <link rel="shortcut icon" href="../src/img/favicon.png" type="image/png">
+  <title>Turnover-Dashboard - CEO</title>
+  <link rel="stylesheet" href="../styles/ceo.css">
 </head>
+
 <body>
-<header>
-    <img src="logo_Turnover.png">
-</header>
-    <div class="table-container">
-        <table>
-            <tr>
-                <th>Nome Completo</th>
-                <th>Salário</th>
-                <th>CPF</th>
-                <th>Setor</th>
-                <th>Data de Contratação</th>
-            </tr>
-            <tr><td>João Silva</td><td>R$ 4.500,00</td><td>123.456.789-00</td><td>Vendas</td><td>2015-01-15</td></tr>
-            <tr><td>Maria Oliveira</td><td>R$ 5.200,00</td><td>987.654.321-00</td><td>Marketing</td><td>2016-02-20</td></tr>
-            <tr><td>Carlos Pereira</td><td>R$ 3.800,00</td><td>456.789.123-00</td><td>TI</td><td>2017-03-25</td></tr>
-            <tr><td>Ana Costa</td><td>R$ 6.000,00</td><td>321.654.987-00</td><td>RH</td><td>2018-04-30</td></tr>
-            <tr><td>Pedro Santos</td><td>R$ 4.700,00</td><td>789.123.456-00</td><td>Vendas</td><td>2019-05-05</td></tr>
-            <tr><td>Lucas Mendes</td><td>R$ 3.200,00</td><td>654.321.987-00</td><td>Marketing</td><td>2020-06-10</td></tr>
-            <tr><td>Fernanda Lima</td><td>R$ 5.500,00</td><td>123.789.456-00</td><td>TI</td><td>2021-07-15</td></tr>
-            <tr><td>Rafael Nunes</td><td>R$ 4.100,00</td><td>987.321.654-00</td><td>RH</td><td>2022-08-20</td></tr>
-            <tr><td>Bruna Alves</td><td>R$ 6.500,00</td><td>456.123.789-00</td><td>Vendas</td><td>2023-09-25</td></tr>
-            <tr><td>Marcelo Dias</td><td>R$ 3.900,00</td><td>654.987.321-00</td><td>Marketing</td><td>2016-10-30</td></tr>
-            <tr><td>Juliana Rocha</td><td>R$ 4.800,00</td><td>789.456.123-00</td><td>TI</td><td>2017-11-05</td></tr>
-            <tr><td>Thiago Borges</td><td>R$ 5.300,00</td><td>321.123.987-00</td><td>RH</td><td>2018-12-10</td></tr>
-            <tr><td>Vanessa Souza</td><td>R$ 4.200,00</td><td>987.654.123-00</td><td>Vendas</td><td>2019-01-15</td></tr>
-            <tr><td>Roberto Ferreira</td><td>R$ 6.800,00</td><td>123.456.987-00</td><td>Marketing</td><td>2020-02-20</td></tr>
-            <tr><td>Paula Martins</td><td>R$ 3.600,00</td><td>654.789.321-00</td><td>TI</td><td>2021-03-25</td></tr>
-            <tr><td>Adriana Gomes</td><td>R$ 5.700,00</td><td>789.321.456-00</td><td>RH</td><td>2022-04-30</td></tr>
-        </table>
+
+  <header>
+    <div class="menuDesktop menuDash">
+      <div class="logoMenuBox logoMenuBoxDash">
+        <nav class="navMenuDesktop navMenuDash">
+          <ul class="navLinks navLinksDash"><a class="logoffDash" href="#">Logoff</a></ul>
+        </nav>
+        <a class="logoMenuLink" href="#" title="Voltar a home">
+          <img class="logoMenu" src="../src/img/logo_Turnover.png" alt="Logo da empresa turnover">
+        </a>
+      </div>
+      <h3 class="saudacaoDash">Olá, nome</h3>
+      <img src="../src/img/logo_atma.png" alt="logo da Atma" class="logoAtma">
+      <!-- <nav class="navMenuDesktop">
+        <ul class="navLinks">
+          <li><a href="../#sobreNos">Sobre Nós</a></li>
+          <li><a href="../#contatos">Contatos</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul> -->
+      </nav>
     </div>
 
+    <div class="cabecalhoSaudacaoDash">
+      <h3 class="saudacaoDash">Olá, nome</h3>
+      <img src="../src/img/logo_atma.png" alt="logo da Atma" class="logoAtma">
+    </div>
+    <div class="menuMobile" id="menuMobile">
+      <img src="../src/img/iso_tipo_turnover.png" alt="Menu">
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#">Logoff</a></li>
+        <!-- <li><a href="../index.html">Pagina inical</a></li>
+        <li><a href="../#sobreNos">Sobre Nós</a></li>
+        <li><a href="../#contatos">Contatos</a></li> -->
+      </ul>
+    </nav>
+
+  </header>
+
+  <main class="principal">
+    <section class="tableDash" id="table_dash" aria-label="Tabelas gerenciais">
+      <div class="searchTable">
+        <h4 class="titleTableView" id="title_table_view">Tabela Departamentos</h4>
+        <div class="buscador">
+          <input class="searchTableInput" id="search_table_input" type="text" id="searchTable" placeholder="Buscar...">
+          <button class="searchTableBtn btnStand" id="search_table_btn">Buscar</button>
+        </div>
+        <button class="addBtn btnStand" id="add_btn">Novo+</button>
+      </div>
+      <div class="tableContainer">
+        
+        <table class="tableView" id="table_view">
+          <tr class="tableCabecalho">
+            <th colspan="2">Nome </th>
+            <th colspan="5">Localização</th>
+            <th colspan="7">Descrição</th>
+            <th>Visualizar</th>
+            <th>Editar</th>
+            <th>Excluir</th>
+          </tr>
+          <tbody class="tableBody" id="table_body">
+            
+            <tr>
+              <td colspan="2">Bioma do Pantâno</td>
+              <td colspan="5">Escritório Geral da Atma andar 3 Sala 303 </td>
+              <td colspan="7">Responsavel pelo o Bioma do Pantâno</td>
+              <td><img src="../src/img/view_btn.png" alt="btn visualizar" class="visualizarBtn btnTabela"
+                  id="visualizar_btn"></td>
+              <td><img src="../src/img/edit_btn.png" alt="btn Editar" class="editarBtn btnTabela" id="editar_btn"></td>
+              <td><img src="../src/img/delete_btn.png" alt="btn Deletar" class="deletarBtn btnTabela" id="deletar_btn">
+              </td>
+
+            <tr>
+              <td colspan="2">Bioma do Pantâno</td>
+              <td colspan="5">Escritório Geral da Atma andar 3 Sala 303 </td>
+              <td colspan="7">Responsavel pelo o Bioma do Pantâno</td>
+              <td><img src="../src/img/view_btn.png" alt="btn visualizar" class="visualizarBtn btnTabela"
+                  id="visualizar_btn"></td>
+              <td><img src="../src/img/edit_btn.png" alt="btn Editar" class="editarBtn btnTabela" id="editar_btn"></td>
+              <td><img src="../src/img/delete_btn.png" alt="btn Deletar" class="deletarBtn btnTabela" id="deletar_btn">
+              </td>
+
+            <tr>
+              <td colspan="2">Bioma do Pantâno</td>
+              <td colspan="5">Escritório Geral da Atma andar 3 Sala 303 </td>
+              <td colspan="7">Responsavel pelo o Bioma do Pantâno</td>
+              <td><img src="../src/img/view_btn.png" alt="btn visualizar" class="visualizarBtn btnTabela"
+                  id="visualizar_btn"></td>
+              <td><img src="../src/img/edit_btn.png" alt="btn Editar" class="editarBtn btnTabela" id="editar_btn"></td>
+              <td><img src="../src/img/delete_btn.png" alt="btn Deletar" class="deletarBtn btnTabela" id="deletar_btn">
+              </td>
+
+            <tr>
+              <td colspan="2">Bioma do Pantâno</td>
+              <td colspan="5">Escritório Geral da Atma andar 3 Sala 303 </td>
+              <td colspan="7">Responsavel pelo o Bioma do Pantâno</td>
+              <td><img src="../src/img/view_btn.png" alt="btn visualizar" class="visualizarBtn btnTabela"
+                  id="visualizar_btn"></td>
+              <td><img src="../src/img/edit_btn.png" alt="btn Editar" class="editarBtn btnTabela" id="editar_btn"></td>
+              <td><img src="../src/img/delete_btn.png" alt="btn Deletar" class="deletarBtn btnTabela" id="deletar_btn">
+              </td>
+
+            </tr>
+
+
+        </table>
+<!-- 
+        <table class="tableView" id="table_view">
+          <tr class="tableCabecalho">
+            <th colspan="3">Nome Completo</th>
+            <th colspan="3">E-mail</th>
+            <th colspan="2">Data de Contratação</th>
+            <th colspan="2">Departamento</th>
+            <th colspan="2">Cargo</th>
+            <th colspan="2">Salário</th>
+            <th>Visualizar</th>
+            <th>Editar</th>
+            <th>Excluir</th>
+          </tr>
+          <tbody class="tableBody" id="table_body">
+
+            <tr>
+              <td colspan="3">João Silva</td>
+              <td colspan="3">joao.silva@example.com</td>
+              <td colspan="2">2020-01-10</td>
+              <td colspan="2">Bioma do Pantâno</td>
+              <td colspan="2">Analista de Pantâno</td>
+              <td colspan="2">R$ 4500,00</td>
+              <td><img src="../src/img/view_btn.png" alt="btn visualizar" class="visualizarBtn btnTabela"
+                  id="visualizar_btn"></td>
+              <td><img src="../src/img/edit_btn.png" alt="btn Editar" class="editarBtn btnTabela" id="editar_btn"></td>
+              <td><img src="../src/img/delete_btn.png" alt="btn Deletar" class="deletarBtn btnTabela" id="deletar_btn">
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">João Silva</td>
+              <td colspan="3">joao.silva@example.com</td>
+              <td colspan="2">2020-01-10</td>
+              <td colspan="2">Bioma do Pantâno</td>
+              <td colspan="2">Analista de Pantâno</td>
+              <td colspan="2">R$ 4500,00</td>
+              <td><img src="../src/img/view_btn.png" alt="btn visualizar" class="visualizarBtn btnTabela"
+                  id="visualizar_btn"></td>
+              <td><img src="../src/img/edit_btn.png" alt="btn Editar" class="editarBtn btnTabela" id="editar_btn"></td>
+              <td><img src="../src/img/delete_btn.png" alt="btn Deletar" class="deletarBtn btnTabela" id="deletar_btn">
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">João Silva</td>
+              <td colspan="3">joao.silva@example.com</td>
+              <td colspan="2">2020-01-10</td>
+              <td colspan="2">Bioma do Pantâno</td>
+              <td colspan="2">Analista de Pantâno</td>
+              <td colspan="2">R$ 4500,00</td>
+              <td><img src="../src/img/view_btn.png" alt="btn visualizar" class="visualizarBtn btnTabela"
+                  id="visualizar_btn"></td>
+              <td><img src="../src/img/edit_btn.png" alt="btn Editar" class="editarBtn btnTabela" id="editar_btn"></td>
+              <td><img src="../src/img/delete_btn.png" alt="btn Deletar" class="deletarBtn btnTabela" id="deletar_btn">
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">João Silva</td>
+              <td colspan="3">joao.silva@example.com</td>
+              <td colspan="2">2020-01-10</td>
+              <td colspan="2">Bioma do Pantâno</td>
+              <td colspan="2">Analista de Pantâno</td>
+              <td colspan="2">R$ 4500,00</td>
+              <td><img src="../src/img/view_btn.png" alt="btn visualizar" class="visualizarBtn btnTabela"
+                  id="visualizar_btn"></td>
+              <td><img src="../src/img/edit_btn.png" alt="btn Editar" class="editarBtn btnTabela" id="editar_btn"></td>
+              <td><img src="../src/img/delete_btn.png" alt="btn Deletar" class="deletarBtn btnTabela" id="deletar_btn">
+              </td>
+            </tr>
+
+        </table> -->
+
+      </div>
+      <div class="btnSwitchTable">
+        <button class="btnSwitchTableBtn btnStand" id="btn_switch_table_funcionarios">Tabela Funcionários</button>
+        <button class="btnSwitchTableBtn btnStand" id="btn_switch_table_departamentos">Tabela Departamentos</button>
+        <button class="btnSwitchTableBtn btnStand" id="btn_switch_table_cargos">Tabela Cargos</button>
+      </div>
+    </section>
+    
+    <!-- 
     <div class="controls-container">
-        <button onclick="includeEmployee()">Incluir Funcionário</button>
-        <button onclick="editEmployee()">Editar Funcionário</button>
-        <button onclick="deleteEmployee()">Excluir Funcionário</button>
+      <button onclick="includeEmployee()">Tabela Funcionários</button>
+      <button onclick="editEmployee()">Tabela Departamentos</button>
+      <button onclick="deleteEmployee()">Tabela Cargos</button>
     </div>
 
     <div class="charts-container">
-        <div class="chart-container">
-            <canvas id="salaryPieChart"></canvas>
-        </div>
-        <div class="chart-container">
-            <canvas id="employeePieChart"></canvas>
-        </div>
-        <div class="chart-container">
-            <canvas id="allocationPieChart"></canvas>
-        </div>
+      <div class="chart-container">
+        <canvas id="salaryPieChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="employeePieChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="allocationPieChart"></canvas>
+      </div>
     </div>
 
     <div class="department-history-table">
-        <h2>Histórico de Departamento</h2>
-        <table class="department-history-table">
-            <tr>
-                <th>Departamento</th>
-                <th>Descrição</th>
-            </tr>
-            <tr><td>Vendas</td><td>Responsável pelas vendas de produtos e serviços.</td></tr>
-            <tr><td>Marketing</td><td>Cuida da estratégia de marketing e promoção.</td></tr>
-            <tr><td>TI</td><td>Gerencia a infraestrutura de tecnologia e suporte técnico.</td></tr>
-            <tr><td>RH</td><td>Gerencia recrutamento, desenvolvimento e bem-estar dos funcionários.</td></tr>
-        </table>
+      <h2>Histórico de Departamento</h2>
+      <table class="department-history-table">
+        <tr>
+          <th>Departamento</th>
+          <th>Descrição</th>
+        </tr>
+        <tr>
+          <td>Vendas</td>
+          <td>Responsável pelas vendas de produtos e serviços.</td>
+        </tr>
+        <tr>
+          <td>Marketing</td>
+          <td>Cuida da estratégia de marketing e promoção.</td>
+        </tr>
+        <tr>
+          <td>TI</td>
+          <td>Gerencia a infraestrutura de tecnologia e suporte técnico.</td>
+        </tr>
+        <tr>
+          <td>RH</td>
+          <td>Gerencia recrutamento, desenvolvimento e bem-estar dos funcionários.</td>
+        </tr>
+      </table>
     </div>
 
     <div class="department-controls-container">
-        <button onclick="addDepartment()">Adicionar Departamento</button>
-        <button onclick="editDepartment()">Alterar Departamento</button>
-        <button onclick="deleteDepartment()">Excluir Departamento</button>
+      <button onclick="addDepartment()">Adicionar Departamento</button>
+      <button onclick="editDepartment()">Alterar Departamento</button>
+      <button onclick="deleteDepartment()">Excluir Departamento</button>
     </div>
 
     <div class="form-container">
-        <h2>Cadastro de Funcionários</h2>
-        <form id="employeeForm">
-            <div class="form-group">
-                <label for="name">Nome Completo:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="position">Cargo:</label>
-                <input type="text" id="position" name="position" required>
-            </div>
-            <div class="form-group">
-                <label for="hours">Carga Horária:</label>
-                <input type="number" id="hours" name="hours" required>
-            </div>
-            <div class="form-group">
-                <label for="department">Departamento:</label>
-                <select id="department" name="department" required>
-                    <option value="Vendas">Vendas</option>
-                    <option value="Marketing">Marketing</option>
-                    <option value="TI">TI</option>
-                    <option value="RH">RH</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <button type="button" onclick="createEmployee()">Criar</button>
-                <button type="button" onclick="viewEmployee()">Visualizar</button>
-                <button type="button" onclick="editEmployee()">Editar</button>
-                <button type="button" onclick="deleteEmployee()">Excluir</button>
-            </div>
-        </form>
-    </div>
+      <h2>Cadastro de Funcionários</h2>
+      <form id="employeeForm">
+        <div class="form-group">
+          <label for="name">Nome Completo:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="position">Cargo:</label>
+          <input type="text" id="position" name="position" required>
+        </div>
+        <div class="form-group">
+          <label for="hours">Carga Horária:</label>
+          <input type="number" id="hours" name="hours" required>
+        </div>
+        <div class="form-group">
+          <label for="department">Departamento:</label>
+          <select id="department" name="department" required>
+            <option value="Vendas">Vendas</option>
+            <option value="Marketing">Marketing</option>
+            <option value="TI">TI</option>
+            <option value="RH">RH</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button type="button" onclick="createEmployee()">Criar</button>
+          <button type="button" onclick="viewEmployee()">Visualizar</button>
+          <button type="button" onclick="editEmployee()">Editar</button>
+          <button type="button" onclick="deleteEmployee()">Excluir</button>
+        </div>
+      </form>
+    </div> -->
+  </main>
 
-    <script>
-        // Gráfico de Pizza - Salário por Departamento
-        const ctxSalaryPie = document.getElementById('salaryPieChart').getContext('2d');
-        const salaryPieChart = new Chart(ctxSalaryPie, {
-            type: 'pie',
-            data: {
-                labels: ['Vendas', 'Marketing', 'TI', 'RH'],
-                datasets: [{
-                    label: 'Salário por Departamento',
-                    data: [18000, 22000, 16500, 20900], // Dados de exemplo
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            }
-        });
 
-        // Gráfico de Pizza - Funcionários por Departamento
-        const ctxEmployeePie = document.getElementById('employeePieChart').getContext('2d');
-        const employeePieChart = new Chart(ctxEmployeePie, {
-            type: 'pie',
-            data: {
-                labels: ['Vendas', 'Marketing', 'TI', 'RH'],
-                datasets: [{
-                    label: 'Funcionários por Departamento',
-                    data: [4, 4, 4, 3], // Dados de exemplo
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            }
-        });
+  <footer class="rodaPe">
+    <p class="rodaPeTexto">CNAE. 7830-2/00 || CNPJ. 00.000.000/000-00 || todos direitos reservados Turnover® 2024 ||
+      #BORACODAR</p>
+  </footer>
 
-        // Gráfico de Pizza - Alocação por Departamento
-        const ctxAllocationPie = document.getElementById('allocationPieChart').getContext('2d');
-        const allocationPieChart = new Chart(ctxAllocationPie, {
-            type: 'pie',
-            data: {
-                labels: ['Vendas', 'Marketing', 'TI', 'RH'],
-                datasets: [{
-                    label: 'Alocação por Departamento',
-                    data: [30, 25, 20, 25], // Dados de exemplo (percentual de alocação de funcionários)
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            }
-        });
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../scripts/main.js"></script>
+  <script>
+    // Gráfico de Pizza - Salário por Departamento
+    const ctxSalaryPie = document.getElementById('salaryPieChart').getContext('2d');
+    const salaryPieChart = new Chart(ctxSalaryPie, {
+      type: 'pie',
+      data: {
+        labels: ['Vendas', 'Marketing', 'TI', 'RH'],
+        datasets: [{
+          label: 'Salário por Departamento',
+          data: [18000, 22000, 16500, 20900], // Dados de exemplo
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)'
+          ],
+          borderWidth: 1
+        }]
+      }
+    });
 
-        // Funções para os botões de controle da tabela
-        function includeEmployee() {
-            alert('Função de inclusão de funcionário não implementada.');
-        }
+    // Gráfico de Pizza - Funcionários por Departamento
+    const ctxEmployeePie = document.getElementById('employeePieChart').getContext('2d');
+    const employeePieChart = new Chart(ctxEmployeePie, {
+      type: 'pie',
+      data: {
+        labels: ['Vendas', 'Marketing', 'TI', 'RH'],
+        datasets: [{
+          label: 'Funcionários por Departamento',
+          data: [4, 4, 4, 3], // Dados de exemplo
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)'
+          ],
+          borderWidth: 1
+        }]
+      }
+    });
 
-        function editEmployee() {
-            alert('Função de edição de funcionário não implementada.');
-        }
+    // Gráfico de Pizza - Alocação por Departamento
+    const ctxAllocationPie = document.getElementById('allocationPieChart').getContext('2d');
+    const allocationPieChart = new Chart(ctxAllocationPie, {
+      type: 'pie',
+      data: {
+        labels: ['Vendas', 'Marketing', 'TI', 'RH'],
+        datasets: [{
+          label: 'Alocação por Departamento',
+          data: [30, 25, 20, 25], // Dados de exemplo (percentual de alocação de funcionários)
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)'
+          ],
+          borderWidth: 1
+        }]
+      }
+    });
 
-        function deleteEmployee() {
-            alert('Função de exclusão de funcionário não implementada.');
-        }
+    // Funções para os botões de controle da tabela
+    function includeEmployee() {
+      alert('Função de inclusão de funcionário não implementada.');
+    }
 
-        function addDepartment() {
-            alert('Função de adição de departamento não implementada.');
-        }
+    function editEmployee() {
+      alert('Função de edição de funcionário não implementada.');
+    }
 
-        function editDepartment() {
-            alert('Função de alteração de departamento não implementada.');
-        }
+    function deleteEmployee() {
+      alert('Função de exclusão de funcionário não implementada.');
+    }
 
-        function deleteDepartment() {
-            alert('Função de exclusão de departamento não implementada.');
-        }
+    function addDepartment() {
+      alert('Função de adição de departamento não implementada.');
+    }
 
-        // Funções para o formulário de cadastro
-        function createEmployee() {
-            const form = document.getElementById('employeeForm');
-            if (form.checkValidity()) {
-                alert('Funcionário criado com sucesso!');
-                form.reset();
-            } else {
-                alert('Por favor, preencha todos os campos obrigatórios.');
-            }
-        }
+    function editDepartment() {
+      alert('Função de alteração de departamento não implementada.');
+    }
 
-        function viewEmployee() {
-            alert('Função de visualização de funcionário não implementada.');
-        }
-    </script>
+    function deleteDepartment() {
+      alert('Função de exclusão de departamento não implementada.');
+    }
+
+    // Funções para o formulário de cadastro
+    function createEmployee() {
+      const form = document.getElementById('employeeForm');
+      if (form.checkValidity()) {
+        alert('Funcionário criado com sucesso!');
+        form.reset();
+      } else {
+        alert('Por favor, preencha todos os campos obrigatórios.');
+      }
+    }
+
+    function viewEmployee() {
+      alert('Função de visualização de funcionário não implementada.');
+    }
+  </script>
 </body>
+
 </html>

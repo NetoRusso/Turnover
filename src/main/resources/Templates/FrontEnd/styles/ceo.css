@@ -1,151 +1,381 @@
- @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("resetAndRoot.css");
 
-:root {
-  --color-dark: #1a2228;
-  --color-white: #f2f8fc;
-  --color-grey: #d9d9d9;
-  --color-standard: #2e3c50;
-  --color-green-1: #00cc5d;
-  --color-green-2: #139146;
-  --color-yellow: #e8a543;
-  --color-red: #e9415a;
 
-  --color-dark-overlay: #1a222888;
-
-  --font-standard: "Roboto", sans-serif;
-  --wght-standard: 500;
-  --wght-bold: 700;
-  --wght-extra-bold: 900;
-
-  --font-size-title-1: clamp(1.25rem, 0.6667rem + 2.5926vw, 3rem);
-  --font-size-title-2: clamp(1rem, 0.6667rem + 1.4815vw, 2rem);
-  --font-size-text-1: clamp(0.75rem, 0.5rem + 1.1111vw, 1.5rem);
-  --font-size-text-2: clamp(0.5rem, 0.3333rem + 0.7407vw, 1rem);
+.menuDash {
+  flex-direction: row-reverse;
 }
 
-body {
-    font-family: var(--font-standard);
-    background-color: var(--color-grey);
+/* Header */
+.navMenuDash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.logoffDash {
+  text-decoration: none;
+  color: var(--color-standard);
+  font-size: 16px;
+  font-family: var(--font-standard);
+  font-weight: var(--wght-bold);
+  gap: 20px;
+  margin-right: 20px;
+}
+
+.logoffDash:hover {
+  /* scale: 1.2; */
+  padding: 8px;
+  color: var(--color-white);
+  font-weight: var(--wght-extra-bold);
+  background-color: var(--color-red);
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 10px;
+}
+
+.logoMenuBoxDash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.saudacaoDash {
+  font-size: var(--font-size-title-2);
+  color: var(--color-standard);
+  margin: 0;
+}
+
+.logoAtma {
+  width: 150px;
+  height: auto;
+}
+
+.cabecalhoSaudacaoDash {
+  display: none;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px;
+}
+
+/* Fim do Header */
+
+.principal {
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  padding: 150px 16px 64px 16px;
+}
+
+.tableDash {
+  width: 100%;
+  overflow-y: auto;
+  margin: 25px 0;
+  border: 1px solid var(--color-grey);
+  background-color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchTable {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 32px 0px 16px 5%;
+  align-self: flex-start;
+  gap: 32px;
+}
+
+.titleTableView {
+  width: 280px;
+  font-size: var(--font-size-title-2);
+  color: var(--color-standard);
+}
+
+.buscador {
+  width: 60%;
+  min-width: 320px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-self: flex-start;
+  gap: 16px;
+}
+
+.searchTableInput {
+  width: 60%;
+  min-width: 150px;
+  height: 56px;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: var(--wght-bold);
+  border: 5px solid var(--color-green-1);
+  box-shadow: var(--color-green-2) -10px -5px 0 0;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 15px;
+  outline-color: transparent;
+}
+
+.searchTableInput:focus {
+  border: 8px solid var(--color-green-2);
+  box-shadow: none;
+}
+
+.btnStand {
+  width: auto;
+  min-width: 150px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: var(--wght-bold);
+  color: var(--color-white);
+  background-color: var(--color-green-1);
+  border: none;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 15px;
+  margin: 16px 0;
+}
+
+.btnStand:hover {
+  cursor: pointer;
+  background-color: var(--color-green-2);
+}
+
+.tableContainer {
+  width: 90%;
+  min-width: 320px;
+  max-height: 400px;
+  overflow-y: auto;
+  margin: 25px 0;
+  border: 1px solid var(--color-grey);
+  background-color: var(--color-white);
+}
+
+.tableView {
+  width: 100%;
+  border-collapse: collapse;
+  border: solid 3px var(--color-gray);
+  font-size: var(--font-size-text-2);
+  text-align: left;
+  height: 30vh;
+}
+
+
+.tableCabecalho {
+  width: 100%;
+  background-color: var(--color-standard);
+  color: var(--color-white);
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  padding: 10px;
+  border-collapse: collapse;
+  border: solid 3px var(--color-gray);
+}
+
+.tabelaCabecalho th {
+  width: auto;
+  height: auto;
+  border-collapse: collapse;
+  min-width: 96px;
+}
+
+.tableBody {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  color: var(--color-standard);
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  padding: 10px;
+  border-collapse: collapse;
+  border: solid 3px var(--color-gray);
+
+}
+
+.tableBody tr {
+  width: 100%;
+  color: var(--color-standard);
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  padding: 10px;
+  border-collapse: collapse;
+  border: solid 3px var(--color-gray);
+}
+
+.tableBody td {
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: auto;
+  border-collapse: collapse;
+  min-width: 96px;
+}
+
+.btnTabela {
+  width: clamp(3rem, 2.8846rem + 0.5128vw, 3.5rem);
+  height: auto;
+  aspect-ratio: 1/1;
+}
+
+.btnTabela:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 200ms ease-in-out;
+}
+
+.btnSwitchTable {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: 32px 0;
+  gap: 16px;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .cabecalhoSaudacaoDash {
+    display: flex;
+  }
+
+  .principal {
+    padding: 96px 16px 64px 16px;
+  }
+
+  .searchTable {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
     margin: 0;
-    padding: 20px;
-    color: var(--color-dark);
+  }
 }
 
-.table-container {
-    width: 80%;
-    max-height: 400px;
-    overflow-y: auto;
-    margin: 25px 0;
-    border: 1px solid var(--color-grey);
-    background-color: var(--color-white);
-}
 
+
+/* 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: var(--font-size-text-2);
-    text-align: left;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-text-2);
+  text-align: left;
 }
 
-th, td {
-    padding: 8px;
-    border-bottom: 1px solid var(--color-grey);
+th,
+td {
+  padding: 8px;
+  border-bottom: 1px solid var(--color-grey);
 }
 
 th {
-    background-color: var(--color-standard);
-    color: var(--color-white);
-}
+  background-color: var(--color-standard);
+  color: var(--color-white);
+} */
 
-.charts-container {
-    display: flex;
-    width: 80%;
-    justify-content: space-between;
-    margin: 25px 0;
-}
+/* .charts-container {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  margin: 25px 0;
+} */
 
-.chart-container {
-    width: 45%;
-}
+/* .chart-container {
+  width: 45%;
+} */
 
-.controls-container {
-    margin: 25px 0;
-}
+/* .controls-container {
+  margin: 25px 0;
+} */
 
-.controls-container button {
-    background-color: var(--color-standard);
-    color: var(--color-white);
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: var(--font-size-text-2);
-}
+/* .controls-container button {
+  background-color: var(--color-standard);
+  color: var(--color-white);
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: var(--font-size-text-2);
+} */
 
-.controls-container button:hover {
-    background-color: var(--color-dark);
-}
+/* .controls-container button:hover {
+  background-color: var(--color-dark);
+} */
 
-.form-container {
-    width: 80%;
-    background-color: var(--color-white);
-    padding: 20px;
-    border: 1px solid var(--color-grey);
-    border-radius: 4px;
-}
+/* .form-container {
+  width: 80%;
+  background-color: var(--color-white);
+  padding: 20px;
+  border: 1px solid var(--color-grey);
+  border-radius: 4px;
+} */
 
-.form-container h2 {
-    margin-top: 0;
-    font-size: var(--font-size-title-2);
-}
+/* .form-container h2 {
+  margin-top: 0;
+  font-size: var(--font-size-title-2);
+} */
 
-.form-group {
-    margin-bottom: 15px;
-}
+/* .form-group {
+  margin-bottom: 15px;
+} */
 
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: var(--font-size-text-1);
-}
+/* .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: var(--font-size-text-1);
+} */
 
-.form-group input, .form-group select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid var(--color-grey);
-    border-radius: 4px;
-}
+/* .form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--color-grey);
+  border-radius: 4px;
+} */
 
-.form-group button {
-    background-color: var(--color-standard);
-    color: var(--color-white);
-    border: none;
-    padding: 10px;
-    margin-top: 10px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: var(--font-size-text-2);
-}
+/* .form-group button {
+  background-color: var(--color-standard);
+  color: var(--color-white);
+  border: none;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: var(--font-size-text-2);
+} */
 
-.form-group button:hover {
-    background-color: var(--color-dark);
-}
+/* .form-group button:hover {
+  background-color: var(--color-dark);
+} */
 
-.search-container {
-    width: 80%;
-    background-color: var(--color-white);
-    padding: 20px;
-    border: 1px solid var(--color-grey);
-    border-radius: 4px;
-    margin-bottom: 25px;
-}
+/* .search-container {
+  width: 80%;
+  background-color: var(--color-white);
+  padding: 20px;
+  border: 1px solid var(--color-grey);
+  border-radius: 4px;
+  margin-bottom: 25px;
+} */
 
-.search-container label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: var(--font-size-text-1);
-}
+/* .search-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: var(--font-size-text-1);
+} */
