@@ -25,10 +25,17 @@ public class FuncionarioController {
 
     //busca todos os funcionarios pela rota "/funcionario"
     @GetMapping
-    @PreAuthorize("hasRole('ROLE_RH')")
+    @PreAuthorize("hasAnyRole('ROLE_RH', 'ROLE_CEO')")
     public List<FuncionarioModel> getAllFuncionarios() {
         return funcionarioService.findAll();
     }
+
+//    @GetMapping("/details")
+//    @PreAuthorize("hasAnyRole('ROLE_RH', 'ROLE_CEO')")
+//    public List<FuncionarioModel> getAllFuncionariosDetails() {
+//        return funcionarioService.getAllFuncionariosWithDetails();
+//    }
+
 
     //salva um funcionario pela rota "funcionario/salvar"
     @PostMapping("/salvar")
@@ -38,18 +45,40 @@ public class FuncionarioController {
         return ResponseEntity.status(HttpStatus.CREATED).body("Funcionário criado com sucesso");
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_RH', 'ROLE_GESTOR', 'ROLE_FUNCIONARIO')")
+    @GetMapping("/{id}/details")
+    public ResponseEntity<FuncionarioRecordDto> getFuncionarioDetailsById(@PathVariable UUID id) {
+        Optional<FuncionarioRecordDto> funcionarioDtoOptional = funcionarioService.findFuncionarioDetailsById(id);
+        return funcionarioDtoOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_RH', 'ROLE_CEO')")
+    @GetMapping("/details")
+    public List<FuncionarioRecordDto> getAllFuncionarioDetails() {
+        return funcionarioService.findAllFuncionarioDetails();
+    }
+
     //busca um funcionario especifico pelo seu id na rota "funcionario/{id}"
+    @PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_RH', 'ROLE_GESTOR', 'ROLE_FUNCIONARIO')")
     @GetMapping("/{id}")
     public ResponseEntity<FuncionarioModel> getFuncionarioById(@PathVariable UUID id) {
         Optional<FuncionarioModel> funcionario = funcionarioService.findById(id);
         return funcionario.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_GESTOR')")
+    @GetMapping("/departamento/{departamentoId}")
+    public List<FuncionarioModel> getAllFuncionarioByDepartamentoId(@PathVariable UUID departamentoId) {
+        return funcionarioService.findAllByDepartamentoId(departamentoId);
+    }
+
     //deleta um funcionario especifico pelo seu id na rota "funcionario/{id}"
+    @PreAuthorize("hasAnyRole('ROLE_RH', 'ROLE_CEO')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteFuncionario(@PathVariable UUID id) {
         funcionarioService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
 
 }
