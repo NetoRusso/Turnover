@@ -16,6 +16,9 @@ public interface FuncionarioRepository extends JpaRepository<FuncionarioModel, U
 
     List<FuncionarioModel> findAllByDepartamentoId(UUID departamentoId);
 
+
+    List<FuncionarioModel> findByDepartamentoIsNull();
+
 //    @Query("SELECT f " +
 //            "FROM FuncionarioModel f " +
 //            "LEFT JOIN f.cargo c " +

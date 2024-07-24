@@ -30,4 +30,5 @@ public class DepartamentoService {
     public void deleteById(UUID id) {
         departamentoRepository.deleteById(id);
     }
+
 }

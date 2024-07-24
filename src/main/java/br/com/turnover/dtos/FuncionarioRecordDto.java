@@ -1,6 +1,7 @@
 package br.com.turnover.dtos;
 
 import java.util.Date;
+import java.util.UUID;
 
 public record FuncionarioRecordDto(
         String nome,
@@ -9,11 +10,8 @@ public record FuncionarioRecordDto(
         String email,
         String turno,
         String modalidade,
-        String cpf,
-        String senha,
-        String tipoDeAcesso,
         UsuarioRecordDto usuario,
-        CargoRecordDto cargo,
-        DepartamentoRecordDto departamento
+        UUID cargo,
+        UUID departamento
 ) {
 }

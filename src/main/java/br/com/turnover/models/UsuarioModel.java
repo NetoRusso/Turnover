@@ -1,6 +1,9 @@
 package br.com.turnover.models;
 
 import br.com.turnover.enums.TipoDeAcessoEnum;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.validator.constraints.br.CPF;
@@ -15,6 +18,9 @@ import java.util.UUID;
 @Data
 @Entity
 @Table(name = "TB_USUARIO")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class UsuarioModel implements UserDetails, Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -35,6 +41,8 @@ public class UsuarioModel implements UserDetails, Serializable {
 
     @OneToOne
     @JoinColumn(name = "funcionario_id")
+    //@JsonIgnoreProperties("funcionario")
+    @JsonIdentityReference(alwaysAsId = true)
     private FuncionarioModel funcionario;
 
     @Override

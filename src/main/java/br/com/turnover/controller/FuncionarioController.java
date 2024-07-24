@@ -3,14 +3,14 @@ package br.com.turnover.controller;
 import br.com.turnover.dtos.FuncionarioRecordDto;
 import br.com.turnover.models.FuncionarioModel;
 import br.com.turnover.services.FuncionarioService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -23,47 +23,33 @@ public class FuncionarioController {
     @Autowired
     private FuncionarioService funcionarioService;
 
-    //busca todos os funcionarios pela rota "/funcionario"
+    @Secured({"ROLE_CEO", "ROLE_RH"})
     @GetMapping
-    @PreAuthorize("hasAnyRole('ROLE_RH', 'ROLE_CEO')")
-    public List<FuncionarioModel> getAllFuncionarios() {
-        return funcionarioService.findAll();
+    public ResponseEntity<List<FuncionarioModel>> getAllFuncionarios() {
+        List<FuncionarioModel> funcionarios = funcionarioService.findAll();
+        return ResponseEntity.ok(funcionarios);
     }
 
-//    @GetMapping("/details")
-//    @PreAuthorize("hasAnyRole('ROLE_RH', 'ROLE_CEO')")
-//    public List<FuncionarioModel> getAllFuncionariosDetails() {
-//        return funcionarioService.getAllFuncionariosWithDetails();
-//    }
-
-
-    //salva um funcionario pela rota "funcionario/salvar"
-    @PostMapping("/salvar")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<String> saveFuncionario(@RequestBody @Valid FuncionarioRecordDto funcionarioDto) {
-        funcionarioService.saveFuncionario(funcionarioDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Funcionário criado com sucesso");
+    @Secured({"ROLE_CEO", "ROLE_GESTOR"})
+    @GetMapping("/departamento")
+    public ResponseEntity<List<FuncionarioModel>> findByDepartamentoIsNull() {
+        List<FuncionarioModel> funcionarios = funcionarioService.findByDepartamentoIsNull();
+        return ResponseEntity.ok(funcionarios);
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_RH', 'ROLE_GESTOR', 'ROLE_FUNCIONARIO')")
-    @GetMapping("/{id}/details")
-    public ResponseEntity<FuncionarioRecordDto> getFuncionarioDetailsById(@PathVariable UUID id) {
-        Optional<FuncionarioRecordDto> funcionarioDtoOptional = funcionarioService.findFuncionarioDetailsById(id);
-        return funcionarioDtoOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    @PreAuthorize("hasAnyRole('ROLE_RH', 'ROLE_CEO')")
-    @GetMapping("/details")
-    public List<FuncionarioRecordDto> getAllFuncionarioDetails() {
-        return funcionarioService.findAllFuncionarioDetails();
-    }
-
-    //busca um funcionario especifico pelo seu id na rota "funcionario/{id}"
-    @PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_RH', 'ROLE_GESTOR', 'ROLE_FUNCIONARIO')")
+    @Secured({"ROLE_CEO", "ROLE_RH", "ROLE_GESTOR", "ROLE_FUNCIONARIO"})
     @GetMapping("/{id}")
     public ResponseEntity<FuncionarioModel> getFuncionarioById(@PathVariable UUID id) {
         Optional<FuncionarioModel> funcionario = funcionarioService.findById(id);
         return funcionario.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    //@PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_RH', 'ROLE_GESTOR', 'ROLE_FUNCIONARIO')")
+    //@Secured({"ROLE_CEO", "ROLE_RH"})
+    @PostMapping("/salvar")
+    public ResponseEntity<Void> saveFuncionario(@RequestBody FuncionarioRecordDto funcionarioDto) {
+        funcionarioService.saveFuncionario(funcionarioDto);
+        return ResponseEntity.created(URI.create("/funcionario/salvar")).build();
     }
 
     @PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_GESTOR')")
@@ -80,5 +66,10 @@ public class FuncionarioController {
         return ResponseEntity.noContent().build();
     }
 
-
+    @PreAuthorize("hasAnyRole('ROLE_RH', 'ROLE_CEO')")
+    @PutMapping("/atualizar/{id}")
+    public ResponseEntity<Void> updateFuncionario(@PathVariable UUID id, @RequestBody FuncionarioRecordDto funcionarioDto) {
+        funcionarioService.updateFuncionario(id, funcionarioDto);
+        return ResponseEntity.created(URI.create("/funcionario/salvar")).build();
+    }
 }

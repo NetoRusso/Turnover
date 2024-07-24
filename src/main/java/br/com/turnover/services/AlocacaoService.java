@@ -8,6 +8,7 @@ import br.com.turnover.repositories.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -26,15 +27,15 @@ public class AlocacaoService {
 //    }
 
     public AlocacaoModel save(AlocacaoRecordDto alocacao) {
-       FuncionarioModel funcionarioModel = FuncionarioRepository.findById(alocacao.funcionarioId()).orElse(null);
+        FuncionarioModel funcionarioModel = FuncionarioRepository.findById(alocacao.funcionarioId()).orElse(null);
         if (funcionarioModel == null) {
             throw new RuntimeException("Funcionario não encontrado");
         }
-            AlocacaoModel alocacaoModel = new AlocacaoModel();
-            alocacaoModel.setAlteracao(alocacao.alteracao());
-            alocacaoModel.setFuncionario(funcionarioModel);
-            return alocacaoRepository.save(alocacaoModel);
-
+        AlocacaoModel alocacaoModel = new AlocacaoModel();
+        alocacaoModel.setAlteracao(alocacao.alteracao());
+        alocacaoModel.setFuncionario(funcionarioModel);
+        alocacaoModel.setDataAtualizacao(LocalDateTime.now());
+        return alocacaoRepository.save(alocacaoModel);
     }
 
 //    public void deleteById(Long id) {
