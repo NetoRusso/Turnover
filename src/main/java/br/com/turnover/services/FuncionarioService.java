@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -99,28 +100,34 @@ public class FuncionarioService {
         funcionarioModel.setContratacao(funcionarioRecordDto.contratacao());
         funcionarioModel.setEmail(funcionarioRecordDto.email());
 
-        AlocacaoModel alocacaoModel = new AlocacaoModel();
-
         if (funcionarioModel.getTurno() != TurnoEnum.valueOf(funcionarioRecordDto.turno().toUpperCase())) {
+            AlocacaoModel alocacaoModel = new AlocacaoModel();
             alocacaoModel.setAlteracao(funcionarioModel.getTurno().toString());
             alocacaoModel.setFuncionario(funcionarioModel);
+            alocacaoModel.setDataAtualizacao(LocalDateTime.now());
             alocacaoRepository.save(alocacaoModel);
         }
         if (funcionarioModel.getModalidade() != ModalidadeEnum.valueOf(funcionarioRecordDto.modalidade().toUpperCase())) {
+            AlocacaoModel alocacaoModel = new AlocacaoModel();
             alocacaoModel.setAlteracao(funcionarioModel.getModalidade().toString());
             alocacaoModel.setFuncionario(funcionarioModel);
+            alocacaoModel.setDataAtualizacao(LocalDateTime.now());
             alocacaoRepository.save(alocacaoModel);
         }
 
         if (funcionarioModel.getCargo() == null || !funcionarioModel.getCargo().getId().equals(funcionarioRecordDto.cargo())) {
+            AlocacaoModel alocacaoModel = new AlocacaoModel();
             alocacaoModel.setAlteracao(funcionarioModel.getCargo() != null ? funcionarioModel.getCargo().getNome() : "null");
             alocacaoModel.setFuncionario(funcionarioModel);
+            alocacaoModel.setDataAtualizacao(LocalDateTime.now());
             alocacaoRepository.save(alocacaoModel);
         }
 
         if (funcionarioModel.getDepartamento() == null || !funcionarioModel.getDepartamento().getId().equals(funcionarioRecordDto.departamento())) {
+            AlocacaoModel alocacaoModel = new AlocacaoModel();
             alocacaoModel.setAlteracao(funcionarioModel.getDepartamento() != null ? funcionarioModel.getDepartamento().getNomeDepartamento() : "null");
             alocacaoModel.setFuncionario(funcionarioModel);
+            alocacaoModel.setDataAtualizacao(LocalDateTime.now());
             alocacaoRepository.save(alocacaoModel);
         }
 

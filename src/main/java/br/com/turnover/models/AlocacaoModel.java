@@ -21,8 +21,8 @@ public class AlocacaoModel implements Serializable {
 
     private LocalDateTime dataAtualizacao;
 
+    //@JsonBackReference
     @ManyToOne
     @JoinColumn(name = "funcionario_id")
     private FuncionarioModel funcionario;
-
 }

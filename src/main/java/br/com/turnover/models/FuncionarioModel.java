@@ -2,6 +2,7 @@ package br.com.turnover.models;
 
 import br.com.turnover.enums.ModalidadeEnum;
 import br.com.turnover.enums.TurnoEnum;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -52,8 +53,8 @@ public class FuncionarioModel implements Serializable {
     @JoinColumn(name = "usuario_id")
     private UsuarioModel usuario;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @JsonBackReference
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "funcionario_id")
     private Set<AlocacaoModel> historicoAlocacao;
-
-
 }
