@@ -187,6 +187,11 @@ body {
   height: auto;
 }
 
+/* h2,h3,h4,h5,h6, p, label ::selection {
+  background-color: var(--color-green-2);
+  color: var(--color-white);
+} */
+
 
 /* Menus */
 
@@ -224,12 +229,15 @@ body {
   font-family: var(--font-standard);
   font-weight: var(--wght-bold);
   gap: 20px;
+  padding: 8px;
+  background-color: transparent;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 10px;
   margin-right: 20px;
 }
 
 .navLinks li a:hover {
   /* scale: 1.2; */
-  padding: 8px;
   color: var(--color-white);
   font-weight: var(--wght-extra-bold);
   background-color: var(--color-green-1);
@@ -332,10 +340,6 @@ body {
   .rodaPe {
     z-index: 750;
   }
-
-
-
-  
 }
 
 @media  screen and (min-width: 768px) {
@@ -346,7 +350,4 @@ body {
   .menuDesktop {
     display: flex;
   }
-
-
-
 }
