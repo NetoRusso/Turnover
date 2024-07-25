@@ -25,7 +25,7 @@ public class CargoService {
     }
 
     public CargoModel save(CargoModel cargo) {
-        return cargoRepository.save(cargo);
+        return cargoRepository.saveAndFlush(cargo);
     }
 
     public void deleteById(UUID id) {

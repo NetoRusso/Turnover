@@ -1,6 +1,7 @@
 package br.com.turnover.models;
 
 import br.com.turnover.enums.TipoDeAcessoEnum;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.validator.constraints.br.CPF;
@@ -33,8 +34,8 @@ public class UsuarioModel implements UserDetails, Serializable {
     @Column(nullable = false)
     private TipoDeAcessoEnum tipoDeAcessoEnum;
 
-    @OneToOne
-    @JoinColumn(name = "funcionario_id")
+    @JsonBackReference
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
     private FuncionarioModel funcionario;
 
     @Override

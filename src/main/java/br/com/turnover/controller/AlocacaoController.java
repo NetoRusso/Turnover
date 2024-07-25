@@ -5,9 +5,11 @@ import br.com.turnover.dtos.AlocacaoRecordDto;
 import br.com.turnover.models.AlocacaoModel;
 import br.com.turnover.services.AlocacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/alocacoes")
@@ -20,10 +22,10 @@ public class AlocacaoController {
         return alocacaoService.findAll();
     }
 
-//    //@GetMapping("/{id}")
-//    public <Alocacao> Alocacao getAlocacaoById(@PathVariable Long id) {
-//        return (Alocacao) alocacaoService.findById(id);
-//    }
+    @GetMapping("/{id}")
+    public ResponseEntity<List<AlocacaoModel>> findAllByFuncionarioId(@PathVariable UUID id) {
+        return ResponseEntity.ok(alocacaoService.findAllByFuncionarioId(id));
+    }
 
     @PostMapping
     public AlocacaoModel createAlocacao(@RequestBody AlocacaoRecordDto alocacao) {

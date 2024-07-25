@@ -1,34 +1,67 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="../styles/login.css">
-</head>
-<body>
-<header>
-    <img src="../src/img/logo_Turnover.png" alt="Logo">
-</header>
 
-<div>
-    <div class="login-container">
-        <h2>Login</h2>
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="username">CPF</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Senha</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit">Entrar</button>
-        </form>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Douglas Moraes, Neto Russo, Romulo Nogueira, Pedro Augusto">
+  <link rel="shortcut icon" href="../src/img/favicon.png" type="image/png">
+  <title>Turnover - Login</title>
+  <link rel="stylesheet" href="../styles/login.css">
+</head>
+
+<body>
+  <header>
+    <div class="menuDesktop">
+      <div class="logoMenuBox">
+        <a class="logoMenuLink" href="../index.html" title="Voltar a home">
+          <img class="logoMenu" src="../src/img/logo_Turnover.png" alt="Logo da empresa turnover">
+        </a>
+      </div>
+      <nav class="navMenuDesktop">
+        <ul class="navLinks">
+          <li><a href="../#sobreNos">Sobre Nós</a></li>
+          <li><a href="../#contatos">Contatos</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </nav>
     </div>
 
-</div>
+    <div class="menuMobile" id="menuMobile">
+      <img src="../src/img/iso_tipo_turnover.png" alt="Menu">
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="login.html">Login</a></li>
+        <li><a href="../index.html">Pagina inical</a></li>
+        <li><a href="../#sobreNos">Sobre Nós</a></li>
+        <li><a href="../#contatos">Contatos</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <script src="../scripts/login.js"></script>
+  <div class="loginContainer">
+    <div class="formLogin">
+      <img class="loginLogo" src="../src/img/logo_Turnover_branco.png" alt="Logo">
+      <h2 class="loginTitulo">Login</h2>
+      <form id="loginForm" class="loginForm">
+        <label for="username" class="loginLabel">CPF</label>
+        <input class="LoginInput" type="text" id="username" name="username"  oninput="mascaraCPF(this)" required>
+        <label for="password" class="loginLabel">Senha</label>
+        <input class="LoginInput" type="password" id="password" name="password" required>
+        <button type="submit" class="loginFormBtn">Entrar</button>
+        <p id="loginError" class="loginError"></p>
+      </form>
+    </div>
+  </div>
+    
+
+  <footer class="rodaPe">
+    <p class="rodaPeTexto">CNAE. 7830-2/00 || CNPJ. 00.000.000/000-00 || todos direitos reservados Turnover® 2024 ||  #BORACODAR</p>
+  </footer>
+
+  <script src="../scripts/main.js"></script>
+  <script src="../scripts/login.js"></script>
 </body>
+
 </html>

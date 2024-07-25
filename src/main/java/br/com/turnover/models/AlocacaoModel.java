@@ -5,7 +5,6 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -22,9 +21,8 @@ public class AlocacaoModel implements Serializable {
 
     private LocalDateTime dataAtualizacao;
 
-    @ManyToOne//(mappedBy = "usuario")
+    //@JsonBackReference
+    @ManyToOne
     @JoinColumn(name = "funcionario_id")
     private FuncionarioModel funcionario;
-
-
 }

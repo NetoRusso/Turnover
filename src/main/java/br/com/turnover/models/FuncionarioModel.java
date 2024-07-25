@@ -2,11 +2,14 @@ package br.com.turnover.models;
 
 import br.com.turnover.enums.ModalidadeEnum;
 import br.com.turnover.enums.TurnoEnum;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
@@ -26,7 +29,7 @@ public class FuncionarioModel implements Serializable {
 
     private Date nascimento;
 
-    private Date contratacao;
+    private LocalDate contratacao;
 
     @Email
     private String email;
@@ -45,13 +48,13 @@ public class FuncionarioModel implements Serializable {
     @JoinColumn(name = "departamento_id")
     private DepartamentoModel departamento;
 
-    @OneToOne
-    @JoinColumn(name = "usuario_id")
+    @JsonManagedReference
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private UsuarioModel usuario;
 
-    @OneToMany(mappedBy = "funcionario")
+    @JsonBackReference
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "funcionario_id")
     private Set<AlocacaoModel> historicoAlocacao;
-
-
-//   private historico_locacao <Alocacao>;
 }

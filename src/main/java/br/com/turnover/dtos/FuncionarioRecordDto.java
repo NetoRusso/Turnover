@@ -1,16 +1,18 @@
 package br.com.turnover.dtos;
 
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.UUID;
 
 public record FuncionarioRecordDto(
         String nome,
         Date nascimento,
-        Date contratacao,
+        LocalDate contratacao,
         String email,
         String turno,
         String modalidade,
-        String cpf,
-        String senha,
-        String tipoDeAcesso
+        UsuarioRecordDto usuario,
+        UUID cargo,
+        UUID departamento
 ) {
 }
