@@ -45,15 +45,16 @@
       <img class="loginLogo" src="../src/img/logo_Turnover_branco.png" alt="Logo">
       <h2 class="loginTitulo">Login</h2>
       <form id="loginForm" class="loginForm">
-          <label for="username" class="loginLabel">CPF</label>
-          <input class="LoginInput" type="text" id="username" name="username" required>
-          <label for="password" class="loginLabel">Senha</label>
-          <input class="LoginInput" type="password" id="password" name="password" required>
+        <label for="username" class="loginLabel">CPF</label>
+        <input class="LoginInput" type="text" id="username" name="username"  oninput="mascaraCPF(this)" required>
+        <label for="password" class="loginLabel">Senha</label>
+        <input class="LoginInput" type="password" id="password" name="password" required>
         <button type="submit" class="loginFormBtn">Entrar</button>
+        <p id="loginError" class="loginError"></p>
       </form>
     </div>
-
   </div>
+    
 
   <footer class="rodaPe">
     <p class="rodaPeTexto">CNAE. 7830-2/00 || CNPJ. 00.000.000/000-00 || todos direitos reservados Turnover® 2024 ||  #BORACODAR</p>

@@ -98,3 +98,7 @@ body {
     background-color: var(--color-green-2);
 }
 
+.loginError {
+    color: var(--color-red);
+}
+

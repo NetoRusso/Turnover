@@ -62,7 +62,8 @@ public class StartupConfig {
                 usuarioCeo.setCpf(ceoCpf);
                 usuarioCeo.setSenha(new BCryptPasswordEncoder().encode("1234")); // Defina a senha padrão para o usuário CEO
                 usuarioCeo.setTipoDeAcessoEnum(TipoDeAcessoEnum.CEO);
-                usuarioRepository.save(usuarioCeo);
+
+
 
                 // Criação do Funcionário
                 FuncionarioModel funcionarioCeo = new FuncionarioModel();
@@ -74,11 +75,12 @@ public class StartupConfig {
                 funcionarioCeo.setModalidade(ModalidadeEnum.PRESENCIAL);
 //                funcionarioCeo.setCargo(cargoCeo);
 //                funcionarioCeo.setDepartamento(departamentoCeo);
+//                funcionarioRepository.save(funcionarioCeo);
                 funcionarioCeo.setUsuario(usuarioCeo);
-                funcionarioRepository.save(funcionarioCeo);
+
 
                 // Associar o Funcionário ao Usuário
-                usuarioCeo.setFuncionario(funcionarioCeo);
+                funcionarioRepository.save(funcionarioCeo);
                 usuarioRepository.save(usuarioCeo);
 
                 System.out.println("Usuário e Funcionário CEO criados com sucesso.");
