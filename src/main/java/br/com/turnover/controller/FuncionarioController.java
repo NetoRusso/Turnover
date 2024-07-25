@@ -5,7 +5,6 @@ import br.com.turnover.models.FuncionarioModel;
 import br.com.turnover.services.FuncionarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -23,21 +22,28 @@ public class FuncionarioController {
     @Autowired
     private FuncionarioService funcionarioService;
 
-    @Secured({"ROLE_CEO", "ROLE_RH"})
+    @PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_RH')")
     @GetMapping
     public ResponseEntity<List<FuncionarioModel>> getAllFuncionarios() {
         List<FuncionarioModel> funcionarios = funcionarioService.findAll();
         return ResponseEntity.ok(funcionarios);
     }
 
-    @Secured({"ROLE_CEO", "ROLE_GESTOR"})
+    @PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_RH', 'ROLE_GESTOR', 'ROLE_FUNCIONARIO')")
+    @PostMapping("/cpf/{cpf}")
+    public ResponseEntity<FuncionarioModel> findByUsuarioCpf(@PathVariable String cpf) {
+        Optional<FuncionarioModel> funcionario = funcionarioService.findByUsuarioCpf(cpf);
+        return funcionario.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_RH', 'ROLE_GESTOR', 'ROLE_FUNCIONARIO')")
     @GetMapping("/departamento")
     public ResponseEntity<List<FuncionarioModel>> findByDepartamentoIsNull() {
         List<FuncionarioModel> funcionarios = funcionarioService.findByDepartamentoIsNull();
         return ResponseEntity.ok(funcionarios);
     }
 
-    @Secured({"ROLE_CEO", "ROLE_RH", "ROLE_GESTOR", "ROLE_FUNCIONARIO"})
+    @PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_RH', 'ROLE_GESTOR', 'ROLE_FUNCIONARIO')")
     @GetMapping("/{id}")
     public ResponseEntity<FuncionarioModel> getFuncionarioById(@PathVariable UUID id) {
         Optional<FuncionarioModel> funcionario = funcionarioService.findById(id);

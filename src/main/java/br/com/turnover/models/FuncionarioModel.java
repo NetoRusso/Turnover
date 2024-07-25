@@ -49,8 +49,8 @@ public class FuncionarioModel implements Serializable {
     private DepartamentoModel departamento;
 
     @JsonManagedReference
-    @OneToOne
-    @JoinColumn(name = "usuario_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private UsuarioModel usuario;
 
     @JsonBackReference

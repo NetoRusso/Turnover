@@ -35,7 +35,7 @@ public class UsuarioModel implements UserDetails, Serializable {
     private TipoDeAcessoEnum tipoDeAcessoEnum;
 
     @JsonBackReference
-    @OneToOne(mappedBy = "usuario")
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
     private FuncionarioModel funcionario;
 
     @Override
