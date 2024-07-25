@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
@@ -41,6 +42,22 @@ public class UsuarioService {
         //usuarioModel.setFuncionario(usuario.funcionario()); // Pode ser null no início
         return usuarioRepository.save(usuarioModel);
     }
+
+//    public UsuarioModel login(String cpf, String senha) {
+//        Optional<UsuarioModel> usuarioOptional = usuarioRepository.findByCpf(cpf);
+//
+//        if (usuarioOptional.isEmpty()) {
+//            throw new RuntimeException("Email e/ou senha incorretos.");
+//        }
+//
+//        UsuarioModel usuario = usuarioOptional.get();
+//
+//        if (!passwordEncoder.matches(senha, usuario.getSenha())) {
+//            throw new RuntimeException("Email e/ou senha incorretos.");
+//        }
+//
+//        return usuario;
+//    }
 
 //    public void deleteById(UUID id) {
 //        usuarioRepository.deleteById(id);
