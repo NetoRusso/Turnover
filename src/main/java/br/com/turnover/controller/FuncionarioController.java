@@ -22,7 +22,7 @@ public class FuncionarioController {
     @Autowired
     private FuncionarioService funcionarioService;
 
-    @PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_RH')")
+    @PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_RH', 'ROLE_GESTOR')")
     @GetMapping
     public ResponseEntity<List<FuncionarioModel>> getAllFuncionarios() {
         List<FuncionarioModel> funcionarios = funcionarioService.findAll();
@@ -30,7 +30,7 @@ public class FuncionarioController {
     }
 
     @PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_RH', 'ROLE_GESTOR', 'ROLE_FUNCIONARIO')")
-    @PostMapping("/cpf/{cpf}")
+    @PostMapping("/cpf/{cpf}")//LOGIN
     public ResponseEntity<FuncionarioModel> loginUsuarioCpf(@PathVariable String cpf) {
         Optional<FuncionarioModel> funcionario = funcionarioService.findByUsuarioCpf(cpf);
         return funcionario.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
@@ -42,7 +42,6 @@ public class FuncionarioController {
         Optional<FuncionarioModel> funcionario = funcionarioService.findByUsuarioCpf(cpf);
         return funcionario.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
-
 
 
     @PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_RH', 'ROLE_GESTOR', 'ROLE_FUNCIONARIO')")
