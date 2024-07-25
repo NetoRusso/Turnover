@@ -1,5 +1,5 @@
 const boxes = document.querySelectorAll(".box");
-let activeIndex = 1;
+let activeIndex = 0;
 let isTransitioning = false;
 
 function updateCurrentImg() {
