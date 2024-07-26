@@ -22,7 +22,7 @@ public class CargoController {
     @Autowired
     private CargoService cargoService;
 
-    @PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_RH')")
+    @PreAuthorize("hasAnyRole('ROLE_CEO', 'ROLE_RH', 'ROLE_GESTOR')")
     @GetMapping
     public List<CargoModel> getAllCargos() {
         return cargoService.findAll();
