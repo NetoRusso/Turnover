@@ -58,17 +58,7 @@ public class FuncionarioService {
         funcionarioModel.setTurno(TurnoEnum.valueOf(funcionarioRecordDto.turno().toUpperCase()));
         funcionarioModel.setModalidade(ModalidadeEnum.valueOf(funcionarioRecordDto.modalidade().toUpperCase()));
 
-        funcionarioModel.setCargo(null);
-        if (funcionarioRecordDto.cargo() != null) {
-            CargoModel cargoModel = cargoRepository.getReferenceById(funcionarioRecordDto.cargo());
-            funcionarioModel.setCargo(cargoModel);
-        }
-
-        funcionarioModel.setDepartamento(null);
-        if (funcionarioRecordDto.departamento() != null) {
-            DepartamentoModel departamentoModel = departamentoRepository.getReferenceById(funcionarioRecordDto.departamento());
-            funcionarioModel.setDepartamento(departamentoModel);
-        }
+        atualizarCargoDepartamentoQuandoDiferenteNulo(funcionarioRecordDto, funcionarioModel);
 
         funcionarioRepository.save(funcionarioModel);
 
@@ -100,6 +90,46 @@ public class FuncionarioService {
         funcionarioModel.setContratacao(funcionarioRecordDto.contratacao());
         funcionarioModel.setEmail(funcionarioRecordDto.email());
 
+        salvarHistoricoAlocacao(funcionarioRecordDto, funcionarioModel);
+
+        funcionarioModel.setTurno(TurnoEnum.valueOf(funcionarioRecordDto.turno().toUpperCase()));
+        funcionarioModel.setModalidade(ModalidadeEnum.valueOf(funcionarioRecordDto.modalidade().toUpperCase()));
+
+        atualizarCargoDepartamentoQuandoDiferenteNulo(funcionarioRecordDto, funcionarioModel);
+
+        funcionarioRepository.save(funcionarioModel);
+        UsuarioModel usuarioModel = atualizarUsuario(funcionarioRecordDto, funcionarioModel);
+
+        funcionarioModel.setUsuario(usuarioModel);
+        funcionarioRepository.save(funcionarioModel);
+        return funcionarioModel;
+    }
+
+    private UsuarioModel atualizarUsuario(FuncionarioRecordDto funcionarioRecordDto, FuncionarioModel funcionarioModel) {
+        UsuarioModel usuarioModel = usuarioRepository.getReferenceById(funcionarioModel.getUsuario().getId());
+        usuarioModel.setCpf(funcionarioRecordDto.usuario().cpf());
+        usuarioModel.setSenha(passwordEncoder.encode(funcionarioRecordDto.usuario().senha()));
+        usuarioModel.setTipoDeAcessoEnum(funcionarioRecordDto.usuario().tipoDeAcesso());
+        usuarioModel.setFuncionario(funcionarioModel);
+        usuarioRepository.save(usuarioModel);
+        return usuarioModel;
+    }
+
+    private void atualizarCargoDepartamentoQuandoDiferenteNulo(FuncionarioRecordDto funcionarioRecordDto, FuncionarioModel funcionarioModel) {
+        funcionarioModel.setCargo(null);
+        if (funcionarioRecordDto.cargo() != null) {
+            CargoModel cargoModel = cargoRepository.getReferenceById(funcionarioRecordDto.cargo());
+            funcionarioModel.setCargo(cargoModel);
+        }
+
+        funcionarioModel.setDepartamento(null);
+        if (funcionarioRecordDto.departamento() != null) {
+            DepartamentoModel departamentoModel = departamentoRepository.getReferenceById(funcionarioRecordDto.departamento());
+            funcionarioModel.setDepartamento(departamentoModel);
+        }
+    }
+
+    private void salvarHistoricoAlocacao(FuncionarioRecordDto funcionarioRecordDto, FuncionarioModel funcionarioModel) {
         if (funcionarioModel.getTurno() != TurnoEnum.valueOf(funcionarioRecordDto.turno().toUpperCase())) {
             AlocacaoModel alocacaoModel = new AlocacaoModel();
             alocacaoModel.setAlteracao(funcionarioModel.getTurno().toString());
@@ -107,6 +137,7 @@ public class FuncionarioService {
             alocacaoModel.setDataAtualizacao(LocalDateTime.now());
             alocacaoRepository.save(alocacaoModel);
         }
+
         if (funcionarioModel.getModalidade() != ModalidadeEnum.valueOf(funcionarioRecordDto.modalidade().toUpperCase())) {
             AlocacaoModel alocacaoModel = new AlocacaoModel();
             alocacaoModel.setAlteracao(funcionarioModel.getModalidade().toString());
@@ -130,33 +161,6 @@ public class FuncionarioService {
             alocacaoModel.setDataAtualizacao(LocalDateTime.now());
             alocacaoRepository.save(alocacaoModel);
         }
-
-        funcionarioModel.setTurno(TurnoEnum.valueOf(funcionarioRecordDto.turno().toUpperCase()));
-        funcionarioModel.setModalidade(ModalidadeEnum.valueOf(funcionarioRecordDto.modalidade().toUpperCase()));
-
-        funcionarioModel.setCargo(null);
-        if (funcionarioRecordDto.cargo() != null) {
-            CargoModel cargoModel = cargoRepository.getReferenceById(funcionarioRecordDto.cargo());
-            funcionarioModel.setCargo(cargoModel);
-        }
-
-        funcionarioModel.setDepartamento(null);
-        if (funcionarioRecordDto.departamento() != null) {
-            DepartamentoModel departamentoModel = departamentoRepository.getReferenceById(funcionarioRecordDto.departamento());
-            funcionarioModel.setDepartamento(departamentoModel);
-        }
-
-        funcionarioRepository.save(funcionarioModel);
-        UsuarioModel usuarioModel = usuarioRepository.getReferenceById(funcionarioModel.getUsuario().getId());
-        usuarioModel.setCpf(funcionarioRecordDto.usuario().cpf());
-        usuarioModel.setSenha(passwordEncoder.encode(funcionarioRecordDto.usuario().senha()));
-        usuarioModel.setTipoDeAcessoEnum(funcionarioRecordDto.usuario().tipoDeAcesso());
-        usuarioModel.setFuncionario(funcionarioModel);
-        usuarioRepository.save(usuarioModel);
-
-        funcionarioModel.setUsuario(usuarioModel);
-        funcionarioRepository.save(funcionarioModel);
-        return funcionarioModel;
     }
 
 }
