@@ -158,8 +158,5 @@ public class FuncionarioService {
         funcionarioRepository.save(funcionarioModel);
         return funcionarioModel;
     }
-    //Sempre que atualizar:
-    //Turno, Modalidade,
-    //Cargo e Departamento
-    //Registra uma nova entrada.
+
 }

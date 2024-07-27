@@ -42,28 +42,11 @@ public class StartupConfig {
         return args -> {
             String ceoCpf = "001.236.950-07"; // Defina o CPF do usuário CEO
             if (!usuarioRepository.existsByCpf(ceoCpf)) {
-                // Criação do Cargo
-//                CargoModel cargoCeo = new CargoModel();
-//                cargoCeo.setNome("CEO");
-//                cargoCeo.setDescricao("Chief Executive Officer");
-//                cargoCeo.setCargaHoraria(40);
-//                cargoCeo.setSalario(10000.0);
-//                cargoRepository.save(cargoCeo);
-
-                // Criação do Departamento
-//                DepartamentoModel departamentoCeo = new DepartamentoModel();
-//                departamentoCeo.setNomeDepartamento("Administração");
-//                departamentoCeo.setLocalizacao("Sede");
-//                departamentoCeo.setDescricao("Administração da Empresa");
-//                departamentoRepository.save(departamentoCeo);
-
                 // Criação do Usuário
                 UsuarioModel usuarioCeo = new UsuarioModel();
                 usuarioCeo.setCpf(ceoCpf);
                 usuarioCeo.setSenha(new BCryptPasswordEncoder().encode("1234")); // Defina a senha padrão para o usuário CEO
                 usuarioCeo.setTipoDeAcessoEnum(TipoDeAcessoEnum.CEO);
-
-
 
                 // Criação do Funcionário
                 FuncionarioModel funcionarioCeo = new FuncionarioModel();
@@ -73,12 +56,8 @@ public class StartupConfig {
                 funcionarioCeo.setEmail("thiago.michel@example.com");
                 funcionarioCeo.setTurno(TurnoEnum.TURNO_A);
                 funcionarioCeo.setModalidade(ModalidadeEnum.PRESENCIAL);
-//                funcionarioCeo.setCargo(cargoCeo);
-//                funcionarioCeo.setDepartamento(departamentoCeo);
-//                funcionarioRepository.save(funcionarioCeo);
                 funcionarioCeo.setUsuario(usuarioCeo);
-
-
+                
                 // Associar o Funcionário ao Usuário
                 funcionarioRepository.save(funcionarioCeo);
                 usuarioRepository.save(usuarioCeo);
