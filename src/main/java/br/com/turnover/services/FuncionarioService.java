@@ -5,6 +5,9 @@ import br.com.turnover.enums.ModalidadeEnum;
 import br.com.turnover.enums.TurnoEnum;
 import br.com.turnover.models.*;
 import br.com.turnover.repositories.*;
+import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -17,6 +20,7 @@ import java.util.UUID;
 @Service
 public class FuncionarioService {
 
+    private static final Logger log = LoggerFactory.getLogger(FuncionarioService.class);
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -72,11 +76,18 @@ public class FuncionarioService {
         funcionarioRepository.save(funcionarioModel);
     }
 
+    @Transactional
     public void deleteById(UUID id) {
         if (!funcionarioRepository.existsById(id)) {
             throw new RuntimeException("Funcionário não encontrado");
         }
-        funcionarioRepository.deleteById(id);
+
+        FuncionarioModel funcionario = funcionarioRepository.findById(id).get();
+        funcionario.setCargo(null);
+        funcionario.setDepartamento(null);
+
+        usuarioRepository.deleteById(funcionario.getUsuario().getId());
+//        funcionarioRepository.deletarFuncionario(funcionario.getId());
     }
 
     public List<FuncionarioModel> findByDepartamentoIsNull() {

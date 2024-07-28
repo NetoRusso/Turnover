@@ -11,7 +11,6 @@ public interface FuncionarioRepository extends JpaRepository<FuncionarioModel, U
 
     boolean existsByUsuarioCpf(String cpf);
 
-    //
     Optional<FuncionarioModel> findByUsuarioCpf(String cpf);
 
     List<FuncionarioModel> findAllByDepartamentoId(UUID departamentoId);
@@ -19,6 +18,9 @@ public interface FuncionarioRepository extends JpaRepository<FuncionarioModel, U
     List<FuncionarioModel> findByDepartamentoIsNull();
 
     List<FuncionarioModel> findAllByCargoId(UUID cargoId);
+
+//    @Query(value = "DELETE FROM FuncionarioModel WHERE id = ?1", nativeQuery = true)
+//    void deletarFuncionario(UUID id);
 
 //    @Query("SELECT f " +
 //            "FROM FuncionarioModel f " +
