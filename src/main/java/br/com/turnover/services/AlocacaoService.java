@@ -39,9 +39,13 @@ public class AlocacaoService {
         return alocacaoRepository.save(alocacaoModel);
     }
 
-    public void deleteById(UUID funcionarioId) {
-        List<AlocacaoModel> alocacoes = alocacaoRepository.findAllByFuncionarioId(funcionarioId);
-        alocacaoRepository.deleteAll(alocacoes);
+//    public void deleteById(UUID funcionarioId) {
+//        List<AlocacaoModel> alocacoes = alocacaoRepository.findAllByFuncionarioId(funcionarioId);
+//        alocacaoRepository.deleteAll(alocacoes);
+//    }
+
+    public void deleteById(UUID alocacaoId) { // Altera o parâmetro para o ID da alocação
+        alocacaoRepository.deleteById(alocacaoId); // Deleta a alocação pelo ID
     }
 
 }

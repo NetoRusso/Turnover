@@ -27,11 +27,18 @@ public class AlocacaoController {
         return ResponseEntity.ok(alocacaoService.findAllByFuncionarioId(id));
     }
 
-    @DeleteMapping("/{funcionarioId}")
-    public ResponseEntity<Void> deleteAlocacoesByFuncionarioId(@PathVariable UUID funcionarioId) {
-        alocacaoService.deleteById(funcionarioId);
-        return ResponseEntity.noContent().build();
+//    @DeleteMapping("/{funcionarioId}")
+//    public ResponseEntity<Void> deleteAlocacoesByFuncionarioId(@PathVariable UUID funcionarioId) {
+//        alocacaoService.deleteById(funcionarioId);
+//        return ResponseEntity.noContent().build();
+//    }
+
+    @DeleteMapping("/{alocacaoId}") // Altera o nome do parâmetro para alocacaoId
+    public ResponseEntity<Void> deleteAlocacaoById(@PathVariable UUID alocacaoId) {
+        alocacaoService.deleteById(alocacaoId); // Chama o método do serviço
+        return ResponseEntity.noContent().build(); // Retorna 204 No Content para indicar sucesso
     }
+
 
 
     @PostMapping
