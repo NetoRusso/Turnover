@@ -1,34 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
-:root {
-  --color-dark: #1a2228;
-  --color-white: #f2f8fc;
-  --color-gray: #d9d9d9;
-  --color-standard: #2e3c50;
-  --color-green-1: #00cc5d;
-  --color-green-2: #139146;
-  --color-yellow: #e8a543;
-  --color-red: #e9415a;
-
-  --color-dark-overlay: #1a222888;
-
-  --font-standard: "Roboto", sans-serif;
-  --wght-standard: 500;
-  --wght-bold: 700;
-  --wght-extra-bold: 900;
-
-  --font-size-title-1: clamp(1.25rem, 0.6667rem + 2.5926vw, 3rem);
-  --font-size-title-2: clamp(1rem, 0.6667rem + 1.4815vw, 2rem);
-  --font-size-text-1: clamp(0.75rem, 0.5rem + 1.1111vw, 1.5rem);
-  --font-size-text-2: clamp(0.5rem, 0.3333rem + 0.7407vw, 1rem);
-
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import url('../styles/resetAndRoot.css');
 
 .body-container {
   display: flex;
