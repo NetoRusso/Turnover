@@ -54,7 +54,7 @@ public class FuncionarioModel implements Serializable {
     private UsuarioModel usuario;
 
     @JsonBackReference
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "funcionario_id")
     private Set<AlocacaoModel> historicoAlocacao;
 }
