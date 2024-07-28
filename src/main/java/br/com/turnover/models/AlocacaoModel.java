@@ -22,7 +22,7 @@ public class AlocacaoModel implements Serializable {
     private LocalDateTime dataAtualizacao;
 
     //@JsonBackReference
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "funcionario_id")
     private FuncionarioModel funcionario;
 }

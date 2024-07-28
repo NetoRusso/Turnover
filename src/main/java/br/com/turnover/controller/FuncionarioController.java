@@ -80,10 +80,10 @@ public class FuncionarioController {
         return ResponseEntity.noContent().build();
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_RH', 'ROLE_CEO')")
-    @PutMapping("/atualizar/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_RH', 'ROLE_CEO', 'ROLE_GESTOR')")
+    @PatchMapping("/atualizar/{id}")
     public ResponseEntity<Void> updateFuncionario(@PathVariable UUID id, @RequestBody FuncionarioRecordDto funcionarioDto) {
         funcionarioService.updateFuncionario(id, funcionarioDto);
-        return ResponseEntity.created(URI.create("/funcionario/salvar")).build();
+        return ResponseEntity.noContent().build(); // Retorna 204 No Content para atualização parcial
     }
 }

@@ -39,7 +39,9 @@ public class AlocacaoService {
         return alocacaoRepository.save(alocacaoModel);
     }
 
-//    public void deleteById(Long id) {
-//        alocacaoRepository.deleteById(id);
-//    }
+    public void deleteById(UUID funcionarioId) {
+        List<AlocacaoModel> alocacoes = alocacaoRepository.findAllByFuncionarioId(funcionarioId);
+        alocacaoRepository.deleteAll(alocacoes);
+    }
+
 }

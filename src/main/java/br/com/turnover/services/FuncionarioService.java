@@ -85,15 +85,29 @@ public class FuncionarioService {
 
     public FuncionarioModel updateFuncionario(UUID id, FuncionarioRecordDto funcionarioRecordDto) {
         FuncionarioModel funcionarioModel = funcionarioRepository.getReferenceById(id);
-        funcionarioModel.setNome(funcionarioRecordDto.nome());
-        funcionarioModel.setNascimento(funcionarioRecordDto.nascimento());
-        funcionarioModel.setContratacao(funcionarioRecordDto.contratacao());
-        funcionarioModel.setEmail(funcionarioRecordDto.email());
+
+        // Atualiza apenas os campos que foram enviados na requisição
+        if (funcionarioRecordDto.nome() != null) {
+            funcionarioModel.setNome(funcionarioRecordDto.nome());
+        }
+        if (funcionarioRecordDto.nascimento() != null) {
+            funcionarioModel.setNascimento(funcionarioRecordDto.nascimento());
+        }
+        if (funcionarioRecordDto.contratacao() != null) {
+            funcionarioModel.setContratacao(funcionarioRecordDto.contratacao());
+        }
+        if (funcionarioRecordDto.email() != null) {
+            funcionarioModel.setEmail(funcionarioRecordDto.email());
+        }
 
         salvarHistoricoAlocacao(funcionarioRecordDto, funcionarioModel);
 
-        funcionarioModel.setTurno(TurnoEnum.valueOf(funcionarioRecordDto.turno().toUpperCase()));
-        funcionarioModel.setModalidade(ModalidadeEnum.valueOf(funcionarioRecordDto.modalidade().toUpperCase()));
+        if (funcionarioRecordDto.turno() != null) {
+            funcionarioModel.setTurno(TurnoEnum.valueOf(funcionarioRecordDto.turno().toUpperCase()));
+        }
+        if (funcionarioRecordDto.modalidade() != null) {
+            funcionarioModel.setModalidade(ModalidadeEnum.valueOf(funcionarioRecordDto.modalidade().toUpperCase()));
+        }
 
         atualizarCargoDepartamentoQuandoDiferenteNulo(funcionarioRecordDto, funcionarioModel);
 
@@ -107,22 +121,25 @@ public class FuncionarioService {
 
     private UsuarioModel atualizarUsuario(FuncionarioRecordDto funcionarioRecordDto, FuncionarioModel funcionarioModel) {
         UsuarioModel usuarioModel = usuarioRepository.getReferenceById(funcionarioModel.getUsuario().getId());
-        usuarioModel.setCpf(funcionarioRecordDto.usuario().cpf());
-        usuarioModel.setSenha(passwordEncoder.encode(funcionarioRecordDto.usuario().senha()));
-        usuarioModel.setTipoDeAcessoEnum(funcionarioRecordDto.usuario().tipoDeAcesso());
+        if (funcionarioRecordDto.usuario().cpf() != null) {
+            usuarioModel.setCpf(funcionarioRecordDto.usuario().cpf());
+        }
+        if (funcionarioRecordDto.usuario().senha() != null) {
+            usuarioModel.setSenha(passwordEncoder.encode(funcionarioRecordDto.usuario().senha()));
+        }
+        if (funcionarioRecordDto.usuario().tipoDeAcesso() != null) {
+            usuarioModel.setTipoDeAcessoEnum(funcionarioRecordDto.usuario().tipoDeAcesso());
+        }
         usuarioModel.setFuncionario(funcionarioModel);
         usuarioRepository.save(usuarioModel);
         return usuarioModel;
     }
 
     private void atualizarCargoDepartamentoQuandoDiferenteNulo(FuncionarioRecordDto funcionarioRecordDto, FuncionarioModel funcionarioModel) {
-        funcionarioModel.setCargo(null);
         if (funcionarioRecordDto.cargo() != null) {
             CargoModel cargoModel = cargoRepository.getReferenceById(funcionarioRecordDto.cargo());
             funcionarioModel.setCargo(cargoModel);
         }
-
-        funcionarioModel.setDepartamento(null);
         if (funcionarioRecordDto.departamento() != null) {
             DepartamentoModel departamentoModel = departamentoRepository.getReferenceById(funcionarioRecordDto.departamento());
             funcionarioModel.setDepartamento(departamentoModel);
@@ -130,31 +147,28 @@ public class FuncionarioService {
     }
 
     private void salvarHistoricoAlocacao(FuncionarioRecordDto funcionarioRecordDto, FuncionarioModel funcionarioModel) {
-        if (funcionarioModel.getTurno() != TurnoEnum.valueOf(funcionarioRecordDto.turno().toUpperCase())) {
+        if (funcionarioRecordDto.turno() != null && funcionarioModel.getTurno() != TurnoEnum.valueOf(funcionarioRecordDto.turno().toUpperCase())) {
             AlocacaoModel alocacaoModel = new AlocacaoModel();
             alocacaoModel.setAlteracao(funcionarioModel.getTurno().toString());
             alocacaoModel.setFuncionario(funcionarioModel);
             alocacaoModel.setDataAtualizacao(LocalDateTime.now());
             alocacaoRepository.save(alocacaoModel);
         }
-
-        if (funcionarioModel.getModalidade() != ModalidadeEnum.valueOf(funcionarioRecordDto.modalidade().toUpperCase())) {
+        if (funcionarioRecordDto.modalidade() != null && funcionarioModel.getModalidade() != ModalidadeEnum.valueOf(funcionarioRecordDto.modalidade().toUpperCase())) {
             AlocacaoModel alocacaoModel = new AlocacaoModel();
             alocacaoModel.setAlteracao(funcionarioModel.getModalidade().toString());
             alocacaoModel.setFuncionario(funcionarioModel);
             alocacaoModel.setDataAtualizacao(LocalDateTime.now());
             alocacaoRepository.save(alocacaoModel);
         }
-
-        if (funcionarioModel.getCargo() == null || !funcionarioModel.getCargo().getId().equals(funcionarioRecordDto.cargo())) {
+        if (funcionarioRecordDto.cargo() != null && (funcionarioModel.getCargo() == null || !funcionarioModel.getCargo().getId().equals(funcionarioRecordDto.cargo()))) {
             AlocacaoModel alocacaoModel = new AlocacaoModel();
             alocacaoModel.setAlteracao(funcionarioModel.getCargo() != null ? funcionarioModel.getCargo().getNome() : "null");
             alocacaoModel.setFuncionario(funcionarioModel);
             alocacaoModel.setDataAtualizacao(LocalDateTime.now());
             alocacaoRepository.save(alocacaoModel);
         }
-
-        if (funcionarioModel.getDepartamento() == null || !funcionarioModel.getDepartamento().getId().equals(funcionarioRecordDto.departamento())) {
+        if (funcionarioRecordDto.departamento() != null && (funcionarioModel.getDepartamento() == null || !funcionarioModel.getDepartamento().getId().equals(funcionarioRecordDto.departamento()))) {
             AlocacaoModel alocacaoModel = new AlocacaoModel();
             alocacaoModel.setAlteracao(funcionarioModel.getDepartamento() != null ? funcionarioModel.getDepartamento().getNomeDepartamento() : "null");
             alocacaoModel.setFuncionario(funcionarioModel);

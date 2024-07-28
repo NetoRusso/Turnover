@@ -27,10 +27,19 @@ public class AlocacaoController {
         return ResponseEntity.ok(alocacaoService.findAllByFuncionarioId(id));
     }
 
+    @DeleteMapping("/{funcionarioId}")
+    public ResponseEntity<Void> deleteAlocacoesByFuncionarioId(@PathVariable UUID funcionarioId) {
+        alocacaoService.deleteById(funcionarioId);
+        return ResponseEntity.noContent().build();
+    }
+
+
     @PostMapping
     public AlocacaoModel createAlocacao(@RequestBody AlocacaoRecordDto alocacao) {
         return alocacaoService.save(alocacao);
     }
+
+
 
 //    @PutMapping("/{id}")
 //    public <Alocacao> Alocacao updateAlocacao(@PathVariable Long id, @RequestBody Alocacao alocacao) throws InterruptedException {
@@ -38,8 +47,5 @@ public class AlocacaoController {
 //        return alocacaoService.save(alocacao);
 //    }
 
-//    @DeleteMapping("/{id}")
-//    public void deleteAlocacao(@PathVariable Long id) {
-//        alocacaoService.deleteById(id);
-//    }
+
 }
