@@ -29,11 +29,11 @@ COPY . .
 # Executar a construção do Maven sem testes
 RUN mvn clean install -DskipTests
 
+# Listar o conteúdo do diretório atual para verificar o resultado da construção
+RUN ls -l /app
+
 # Listar o conteúdo do diretório /target para verificar se o JAR foi gerado
 RUN ls -l /target
-
-# Listar a estrutura de diretórios para ver onde o JAR está
-RUN find / -name "*.jar"
 
 # Etapa de runtime
 FROM openjdk:22-slim
