@@ -30,7 +30,7 @@ COPY . .
 RUN mvn clean install -DskipTests
 
 # Listar o conteúdo do diretório atual para verificar o resultado da construção
-RUN ls -l /app
+RUN ls -l /src
 
 # Listar o conteúdo do diretório /target para verificar se o JAR foi gerado
 RUN ls -l /target
