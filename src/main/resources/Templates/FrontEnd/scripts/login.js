@@ -9,7 +9,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
   const encodedCredentials = btoa(`${cpf}:${password}`);
 
 
-  const response = await fetch(`http://localhost:8080/funcionario/cpf/${cpf}`, {
+  const response = await fetch(`https://turnover-d4g6.onrender.com/funcionario/cpf/${cpf}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
