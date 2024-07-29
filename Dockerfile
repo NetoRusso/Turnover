@@ -29,12 +29,6 @@ COPY . .
 # Executar a construção do Maven sem testes
 RUN mvn clean install -DskipTests
 
-# Listar o conteúdo do diretório atual para verificar o resultado da construção
-RUN ls -l /src
-
-# Listar o conteúdo do diretório /target para verificar se o JAR foi gerado
-RUN ls -l /target
-
 # Etapa de runtime
 FROM openjdk:22-slim
 
@@ -42,7 +36,7 @@ FROM openjdk:22-slim
 EXPOSE 8080
 
 # Copiar o artefato construído da etapa de build para a etapa de runtime
-COPY --from=build /target/turnover-0.0.1.jar app.jar
+COPY --from=build /target/turnover-0.0.1-SNAPSHOT.jar app.jar
 
 # Definir o ponto de entrada para executar o jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
