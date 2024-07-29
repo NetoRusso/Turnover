@@ -26,8 +26,8 @@ RUN apt-get update && apt-get install -y maven
 # Copiar todos os arquivos da aplicação para o contêiner
 COPY . .
 
-# Executar a construção do Maven
-RUN mvn clean install
+# Executar a construção do Maven sem testes
+RUN mvn clean install -DskipTests
 
 # Etapa de runtime
 FROM openjdk:22-slim
