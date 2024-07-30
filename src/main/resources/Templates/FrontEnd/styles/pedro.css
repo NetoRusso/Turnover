@@ -45,7 +45,7 @@
 }
 
 .box:nth-child(3) {
-  background-image: url('../src/img/imgapresentacao/24.jpg');
+  background-image: url('../src/img/imgapresentacao/27.jpg');
   background-size: 100%;
 }
 
@@ -56,11 +56,11 @@
 
 .box:nth-child(5) {
   background-size: 100%;
-  background-image: url('../src/img/imgapresentacao/26.jpg');
+  background-image: url('../src/img/imgapresentacao/26_2.jpg');
 }
 .box:nth-child(6) {
   background-size: 100%;
-  background-image: url('../src/img/imgapresentacao/27.jpg');
+  background-image: url('../src/img/imgapresentacao/24.jpg');
 }
 .box:nth-child(7) {
   background-size: 100%;
