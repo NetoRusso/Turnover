@@ -51,20 +51,20 @@
 
 .box:nth-child(4) {
   background-size: 100%;
-  background-image: url('../src/img/imgapresentacao/12.jpg');
+  background-image: url('../src/img/imgapresentacao/11_3.jpg');
 }
 
 .box:nth-child(5) {
   background-size: 100%;
-  background-image: url('../src/img/imgapresentacao/13.jpg');
+  background-image: url('../src/img/imgapresentacao/12_3.jpg');
 }
 .box:nth-child(6) {
   background-size: 100%;
-  background-image: url('../src/img/imgapresentacao/14.jpg');
+  background-image: url('../src/img/imgapresentacao/15.jpg');
 }
 .box:nth-child(7) {
   background-size: 100%;
-  background-image: url('../src/img/imgapresentacao/15.jpg');
+  background-image: url('../src/img/imgapresentacao/14_3.jpg');
 }
 
 .box .overlay {

@@ -33,36 +33,40 @@
   background-position: center;
   background-size: auto 200%;
 }
-
-.box:nth-child(1) {
-  background-image: url('../src/img/imgapresentacao/22.jpg');
+ .box:nth-child(1) {
   background-size: 100%;
+  background-image: url('../src/img/imgapresentacao/22.jpg');
 }
 
 .box:nth-child(2) {
+  background-image: url('../src/img/imgapresentacao/22_2.jpg');
   background-size: 100%;
-  background-image: url('../src/img/imgapresentacao/23.jpg');
 }
 
 .box:nth-child(3) {
-  background-image: url('../src/img/imgapresentacao/27.jpg');
   background-size: 100%;
+  background-image: url('../src/img/imgapresentacao/23_2.jpg');
 }
 
 .box:nth-child(4) {
+  background-image: url('../src/img/imgapresentacao/24_2.jpg');
   background-size: 100%;
-  background-image: url('../src/img/imgapresentacao/25.jpg');
 }
 
 .box:nth-child(5) {
   background-size: 100%;
-  background-image: url('../src/img/imgapresentacao/26_2.jpg');
+  background-image: url('../src/img/imgapresentacao/25_2.jpg');
 }
+
 .box:nth-child(6) {
   background-size: 100%;
-  background-image: url('../src/img/imgapresentacao/24.jpg');
+  background-image: url('../src/img/imgapresentacao/26.jpg');
 }
 .box:nth-child(7) {
+  background-size: 100%;
+  background-image: url('../src/img/imgapresentacao/27_2.jpg');
+}
+.box:nth-child(8) {
   background-size: 100%;
   background-image: url('../src/img/imgapresentacao/28.jpg');
 }
@@ -70,7 +74,7 @@
   background-size: 100%;
   background-image: url('../src/img/imgapresentacao/29.jpg');
 }
- .box:nth-child(8) {
+ .box:nth-child(10) {
   background-size: 100%;
   background-image: url('../src/img/imgapresentacao/30.jpg');
 }
